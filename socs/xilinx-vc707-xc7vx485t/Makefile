@@ -44,27 +44,34 @@ TOP_VLOG_SIM_SRCS +=
 
 
 ### Xilinx Vivado hw_server ###
-FPGA_HOST ?= localhost
-XIL_HW_SERVER_PORT ?= 3121
-
+#FPGA_HOST ?= localhost
+#XIL_HW_SERVER_PORT ?= 3121
+FPGA_HOST=espdev.cs.columbia.edu
+XIL_HW_SERVER_PORT=3131
 
 ### Network configuration ###
 
 # IP address or host name of the host connected to the FPGA
-UART_IP ?=
-UART_PORT ?=
+#UART_IP ?=
+#UART_PORT ?=
+UART_IP=espdev.cs.columbia.edu
+UART_PORT=4330
 
 # SSH IP address or host name of the ESP Linux instance or gateway
-SSH_IP ?=
-SSH_PORT ?= 22
+#SSH_IP ?=
+#SSH_PORT ?= 22
+SSH_IP=espgate.cs.columbia.edu
+SSH_PORT=5507
 
 # ESPLink IP address or gateway (DO NOT USE HOST NAME)
-ESPLINK_IP ?=
-ESPLINK_PORT ?= 46392
+#ESPLINK_IP ?=
+#ESPLINK_PORT ?= 46392
+ESPLINK_IP="128.59.22.75"
+ESPLINK_PORT=46313
 
 # MAC address for Linux if using IP address reservation (e.g. 00aabb33cc77)
 # LINUX_MAC ?=
-
+LINUX_MAC=000A35035014
 
 ### Include global Makefile ###
 include $(ESP_ROOT)/utils/Makefile
