@@ -13,9 +13,15 @@
 #define DRV_NAME	"example_rtl"
 
 /* <<--regs-->> */
+///////// Original Values ///////////
 #define EXAMPLE_REG1_REG 0x48
 #define EXAMPLE_REG3_REG 0x44
 #define EXAMPLE_REG2_REG 0x40
+
+//////// New values ////////////////
+//#define EXAMPLE_REG1_REG 0x36
+//#define EXAMPLE_REG3_REG 0x32
+//#define EXAMPLE_REG3_REG 0x28
 
 struct example_rtl_device {
 	struct esp_device esp;

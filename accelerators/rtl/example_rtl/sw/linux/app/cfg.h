@@ -8,6 +8,10 @@
 
 typedef int32_t token_t;
 
+unsigned _st;
+
+unsigned words_per_dma_packet = 2;
+
 /* <<--params-def-->> */
 #define REG1 8
 #define REG3 64
@@ -31,8 +35,8 @@ struct example_rtl_access example_cfg_000[] = {
 	{
 		/* <<--descriptor-->> */
 		.reg1 = REG1,
-		.reg3 = REG3,
-		.reg2 = REG2,
+		.reg3 = 32,
+		.reg2 = 102,
 		.src_offset = 0,
 		.dst_offset = 0,
 		.esp.coherence = ACC_COH_NONE,

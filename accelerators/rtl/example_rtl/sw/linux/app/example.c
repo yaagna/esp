@@ -29,17 +29,18 @@ static int validate_buffer(token_t *out, token_t *gold)
 	return errors;
         */     
         
-        for (i = 0; i < 1; i++)
-                for (j = 0; j < reg3; j++) {
-                         printf("acc out %d gold: %d, out: %d, gold_addr: %p, out_addr: %p \n", 
+	for (i = 0; i < 1; i++)
+		//for (j = 0; j < 2*reg2; j++) {
+		for (j = 0; j < reg3; j++) { //reg3 is the output index
+			printf("acc out %d gold: %d, out: %d, gold_addr: %p, out_addr: %p \n", 
 					j, gold[i * out_words_adj + j], out[i * out_words_adj + j], 
 					&gold[i * out_words_adj + j], &out[i * out_words_adj + j]);
-
-                         if (gold[i * out_words_adj + j] != out[i * out_words_adj + j])
+			
+			if (gold[i * out_words_adj + j] != out[i * out_words_adj + j])
 				errors++;
 	
 	}
-        return errors;
+	return errors;
         
 }
 
@@ -50,7 +51,9 @@ static void init_buffer(token_t *in, token_t * gold)
 	int i;
 	int j;
 
-        
+        //// Added /////
+
+        //// Added Complete /////
 
 
 	for (i = 0; i < 1; i++)
@@ -71,10 +74,12 @@ static void init_parameters()
 {
 	if (DMA_WORD_PER_BEAT(sizeof(token_t)) == 0) {
 		in_words_adj = reg2;
-		out_words_adj = reg2;
+		//out_words_adj = reg2;
+                out_words_adj = reg3;
 	} else {
 		in_words_adj = round_up(reg2, DMA_WORD_PER_BEAT(sizeof(token_t)));
-		out_words_adj = round_up(reg2, DMA_WORD_PER_BEAT(sizeof(token_t)));
+		//out_words_adj = round_up(reg2, DMA_WORD_PER_BEAT(sizeof(token_t)));
+                out_words_adj = round_up(reg3, DMA_WORD_PER_BEAT(sizeof(token_t)));
 	}
 	in_len = in_words_adj * (1);
 	out_len =  out_words_adj * (1);
@@ -99,7 +104,7 @@ int main(int argc, char **argv)
     
 	gold = malloc(out_size);
 
-	init_buffer(buf, gold);
+	init_buffer(buf, gold);// uncomment this after test
 
 	printf("\n====== %s ======\n\n", cfg_000[0].devname);
 	/* <<--print-params-->> */
@@ -111,8 +116,8 @@ int main(int argc, char **argv)
 	esp_run(cfg_000, NACC);
 
 	printf("\n  ** DONE **\n");
-
-	errors = validate_buffer(&buf[out_offset], gold);
+ 
+	errors = validate_buffer(&buf[out_offset], gold); // uncomment this
 
 	free(gold);
 	esp_free(buf);

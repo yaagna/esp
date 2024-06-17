@@ -21,797 +21,6 @@
 
 typedef int32_t token_t;
 
-///////////////////// Added Functions /////////////////////
-#define SIZE 8
-
-// Function to generate a random matrix of size 16x16
-void generate_random_matrix(int matrix[SIZE][SIZE]) {
-    // Seed the random number generator with millisecond precision
-    //srand (time(NULL) * 1000 + clock());
-    // srand((unsigned int)time(NULL));
-
-    // Fill the matrix with random values between 0 and 15
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            matrix[i][j] = rand() % 16;
-        }
-    }
-}
-
-// Function to generate trasnpose of an input matrix
-void transpose(int matrix[SIZE][SIZE], int transpose_matrix[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            transpose_matrix[j][i] = matrix[i][j];
-        }
-    }
-}
-
-// Function to print the matrix
-void print_matrix(int matrix[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-// Function to print the matrix in binary
-void print_matrix_b(char matrix[SIZE][SIZE][4]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("At position %d, %d: \n", i, j);
-            for (int k = 0; k < 4; k++){
-                printf("%d", matrix[i][j][k]);
-            }
-            printf("\n");
-        }
-    }
-}
-
-// Function to print the transformed matrix in binary
-void print_transformed_matrix_b(char matrix[SIZE][SIZE][8]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("At position %d, %d: \n", i, j);
-            for (int k = 0; k < 8; k++){
-                printf("%d", matrix[i][j][k]);
-            }
-            printf("\n");
-        }
-    }
-}
-
-// Function to multiply two matrices
-void matrix_mult(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int result[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            result[i][j] = 0;
-            for (int k = 0; k < SIZE; k++) {
-                result[i][j] += matrix1[i][k] * matrix2[k][j];
-            }
-        }
-    }
-}
-
-// Function to convert decimal to binary
-void d2b(int decimal, char binary[]){
-    int i = 0;
-    // Convert decimal to binary
-    for (i = 3; i >= 0; i--){
-        binary[i] = decimal % 2;
-        decimal = decimal / 2;
-    }
-}
-
-// Function to convert matrix from decimal to binary
-void matrix_d2b(int decimal_matrix[SIZE][SIZE], char binary_matrix[SIZE][SIZE][4]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            d2b(decimal_matrix[i][j], binary_matrix[i][j]);
-        }
-    }
-}
-
-// Do the transformation from MSB4 MSB3 MSB2 MSB1 ->  MSB4 MSB3 MSB4 MSB3 MSB2 MSB1 MSB2 MSB1 on Weight Matrix entries
-// Function for weight transformation
-void weight_transform(char input[4], char output[8]){
-    for (int i = 0; i < 2; ++i) {
-        output[6 + i] = input[2 + i];
-    }
-    for (int i = 0; i < 2; i++){
-        output[4 + i] = input[2 + i];
-    }
-    for (int i = 0; i < 2; i++){
-        output[2 + i] = input[i];
-    }
-    for (int i = 0; i < 2; i++){
-        output[i] = input[i];
-    }
-
-}
-
-// Do the transformation for input matrix from MSB4 MSB3 MSB2 MSB1 -> MSB2 MSB1 MSB4 MSB3 MSB2 MSB1 MSB4 MSB3
-// Function for input transformation
-void input_transform(char input[4], char output[8]){
-    for (int i = 0; i < 2; ++i) {
-        output[6 + i] = input[i];
-    }
-    for (int i = 0; i < 2; i++){
-        output[4 + i] = input[i+2];
-    }
-    for (int i = 0; i < 2; i++){
-        output[2 + i] = input[i];
-    }
-    for (int i = 0; i < 2; i++){
-        output[i] = input[i+2];
-    }
-}
-
-// Weight_0 it contains first 4 elements of 1st, 3rd, 5th and so on row of weight matrix
-// So weight_0 will have 4 entries each 32 bits wide
-// Weight_0 entry 1 = concatenation of binary_matrix[0][3],binary_matrix[0][2],binary_matrix[0][1],binary_matrix[0][0]
-/* 
-So the below function will take transformed_matrix and then strore 1st 4 elements of 1st row into weight_0[0]
-and 1st 4 elements of 3rd row into weight_0[1] and so on
-*/
-void weight_0(char input[4][8], char output[32]){
-    // output[24 to 31] = input[0][8]
-    // output[16 to 23] = input[1][8]
-    // output[8 to 15] = input[2][8]
-    // output[0 to 7] = input[3][8]
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 0){
-                output[24+j] = input[i][j];
-            }
-            else if(i == 1){
-                output[16+j] = input[i][j];
-            }
-            else if(i == 2){
-                output[8+j] = input[i][j];
-            }
-            else if(i == 3){
-                output[j] = input[i][j];
-            }
-        }
-    }
-}
-
-// Weight_2 it contains second 4 elements of 1st, 3rd and 5th row of weight matrix
-// So weight_2 will have 4 entries each 32 bits wide
-// Weight_2 entry 1 = concatenation of binary_matrix[0][7],binary_matrix[0][6],binary_matrix[0][5],binary_matrix[0][4]
-/* 
-So the below function will take transformed_matrix and then strore 1st 4 elements of 1st row into weight_2[0]
-and 1st 4 elements of 3rd row into weight_2[1] and so on
-*/
-void weight_2(char input[4][8], char output[32]){
-    // output[24 to 31] = input[0][8]
-    // output[16 to 23] = input[1][8]
-    // output[8 to 15] = input[2][8]
-    // output[0 to 7] = input[3][8]
-    for (int i = 4; i < 8; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 4){
-                output[24+j] = input[i][j];
-            }
-            else if(i == 5){
-                output[16+j] = input[i][j];
-            }
-            else if(i == 6){
-                output[8+j] = input[i][j];
-            }
-            else if(i == 7){
-                output[j] = input[i][j];
-            }
-        }
-    }
-}
-
-// Input_0 it contains 8 elements and each element is composed of 4 entries of each column
-/*
-Let input matrix be a1 a2 a3 a4 
-                    b1 b2 b3 b4
-                    c1 c2 c3 c4
-                    d1 d2 d3 d4
-
-so input_1 will be d1c1b1a1
-                   d2c2b2a2
-                   d3c3b3a3
-                   d4c4b4a4
-
-Exterpolate this for 8x8 matrix
-*/
-
-
-int generate() {
-    int weight_matrix[SIZE][SIZE];
-    int input_matrix[SIZE][SIZE];
-    int golden_matrix[SIZE][SIZE];
-
-    // For Weight matrix
-    char output_weight_matrix[SIZE][SIZE][4];
-    char transformed_weight_matrix[SIZE][SIZE][8];
-
-    // For Input matrix
-    int transpose_input_matrix[SIZE][SIZE];
-    char output_input_matrix[SIZE][SIZE][4];
-    char transformed_input_matrix[SIZE][SIZE][8];
-
-    // Generate the random matrix
-    generate_random_matrix(weight_matrix);
-    generate_random_matrix(input_matrix);
-
-    // Do transpose of input matrix
-    transpose(input_matrix, transpose_input_matrix);
-
-    // Generate Golden Output matrix
-    matrix_mult(weight_matrix, input_matrix, golden_matrix);
-    
-/*
-    // Print the random matrix and golden matrix
-    printf("Weight Matrix is: \n");
-    print_matrix(weight_matrix);
-    printf("\n Input Matrix is: \n");
-    print_matrix(input_matrix);
-    printf("\n Transpose Input Matrix is: \n");
-    print_matrix(transpose_input_matrix);
-    printf("\n Golden Matrix is: \n");
-    print_matrix(golden_matrix);
-*/
-
-    // Convert the weight matrix to binary
-    //printf("\n Output Matrix is: \n");
-    matrix_d2b(weight_matrix, output_weight_matrix);
-    //print_matrix_b(output_weight_matrix);
-    
-    // Transform the weight matrix
-    for (int i = 0; i < SIZE; i++){
-        for (int j = 0; j < SIZE; j++){
-            weight_transform(output_weight_matrix[i][j], transformed_weight_matrix[i][j]);
-        }
-    }
-
-    // Print the transformed weight matrix
-    //printf("\n Transformed Weight Matrix is: \n");
-    //print_transformed_matrix_b(transformed_weight_matrix);
-
-
-    // Convert the input matrix to binary
-    matrix_d2b(transpose_input_matrix, output_input_matrix);
-    //print_matrix_b(output_input_matrix);
-
-    // Transform the input matrix
-    for (int i = 0; i < SIZE; i++){
-        for (int j = 0; j < SIZE; j++){
-            input_transform(output_input_matrix[i][j], transformed_input_matrix[i][j]);
-        }
-    }
-
-    // Print the transformed input matrix
-    //printf("\n Transformed Input Matrix is: \n");
-    //print_transformed_matrix_b(transformed_input_matrix);
-
-    ////////////////////////////// Weight_0 //////////////////////////////
-    char weight_input_0[4][32];
-    weight_0(transformed_weight_matrix[0], weight_input_0[0]);
-    weight_0(transformed_weight_matrix[2], weight_input_0[1]);
-    weight_0(transformed_weight_matrix[4], weight_input_0[2]);
-    weight_0(transformed_weight_matrix[6], weight_input_0[3]);
-
-/*
-    // Print weight_input_0
-    printf(" \n Weight_0 is: \n");
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", weight_input_0[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the weight_input_0 to hexadecimal note the binary is not in 2's complement
-    unsigned int weight_hexadecimal_input_0[4];
-    for (int i = 0; i < 4; i++){
-        weight_hexadecimal_input_0[i] = 0;
-        for (int j = 0; j < 32; j++){
-            weight_hexadecimal_input_0[i] += weight_input_0[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print weight_decimal_input_0
-/*
-    printf(" \n Weight_0 in hexadecimal is: \n");
-    for (int i = 0; i < 4; i++){
-        printf("%x\n", weight_hexadecimal_input_0[i]);
-    }
-*/
-
-    ////////////////////////////// WBUFF_0 //////////////////////////////
-    // This function will take weight_hexadecimal_input_0 and then make it such that it can be fed into the WBUFF_0 directly
-    /*
-        For WBUFF_0 each entry in weight_hexadecimal_input_0 will be copied for 7 times and last two entries will be padded with 0
-    */
-    unsigned int wbuff_0[34];
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 0){
-                wbuff_0[j] = weight_hexadecimal_input_0[i]; 
-            }
-            else if (i == 1){
-                wbuff_0[j + 8] = weight_hexadecimal_input_0[i];
-            }
-            else if(i == 2){
-                wbuff_0[j + 16] = weight_hexadecimal_input_0[i];
-            }
-            else if(i == 3){
-                wbuff_0[j + 24] = weight_hexadecimal_input_0[i];
-            }
-            wbuff_0[32] = 0;
-            wbuff_0[33] = 0;           
-        }
-    }
-
-    // Print wbuff_0
-/*
-    printf(" \n WBUFF_0 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", wbuff_0[i]);
-    }
-*/
-
-    ////////////////////////////// Weight_2 //////////////////////////////
-    char weight_input_2[4][32];
-    weight_2(transformed_weight_matrix[0], weight_input_2[0]);
-    weight_2(transformed_weight_matrix[2], weight_input_2[1]);
-    weight_2(transformed_weight_matrix[4], weight_input_2[2]);
-    weight_2(transformed_weight_matrix[6], weight_input_2[3]);
-
-    // Print weight_input_2
-/*
-    printf(" \n Weight_2 is: \n");
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", weight_input_2[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the weight_input_2 to decimal note the binary is not in 2's complement
-    unsigned int weight_hexadecimal_input_2[4];
-    for (int i = 0; i < 4; i++){
-        weight_hexadecimal_input_2[i] = 0;
-        for (int j = 0; j < 32; j++){
-            weight_hexadecimal_input_2[i] += weight_input_2[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print weight_hexadecimal_input_2
-/*
-    printf(" \n Weight_2 in hexadecimal is: \n");
-    for (int i = 0; i < 4; i++){
-        printf("%x\n", weight_hexadecimal_input_2[i]);
-    }
-*/
-
-    ////////////////////////////// WBUFF_2 //////////////////////////////
-    // This function will take weight_hexadecimal_input_2 and then make it such that it can be fed into the WBUFF_2 directly
-    /*
-        For WBUFF_0 each entry in weight_hexadecimal_input_2 will be copied for 7 times and first and last entries will be padded with 0
-    */
-    unsigned int wbuff_2[34];
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 0){
-                wbuff_2[j + 1] = weight_hexadecimal_input_2[i]; 
-            }
-            else if (i == 1){
-                wbuff_2[j + 9] = weight_hexadecimal_input_2[i];
-            }
-            else if(i == 2){
-                wbuff_2[j + 17] = weight_hexadecimal_input_2[i];
-            }
-            else if(i == 3){
-                wbuff_2[j + 25] = weight_hexadecimal_input_2[i];
-            }
-            wbuff_2[0] = 0;
-            wbuff_2[33] = 0;           
-        }
-    }
-
-    // Print wbuff_2
-/*
-    printf(" \n WBUFF_2 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", wbuff_2[i]);
-    }
-*/
-    ////////////////////////////// Weight_1 //////////////////////////////
-    char weight_input_1[4][32];
-    weight_0(transformed_weight_matrix[1], weight_input_1[0]);
-    weight_0(transformed_weight_matrix[3], weight_input_1[1]);
-    weight_0(transformed_weight_matrix[5], weight_input_1[2]);
-    weight_0(transformed_weight_matrix[7], weight_input_1[3]);
-
-    // Print weight_input_1
-/*
-    printf("\n Weight_1 is: \n");
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", weight_input_1[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the weight_input_1 to hexadecimal note the binary is not in 2's complement
-    unsigned int weight_hexadecimal_input_1[4];
-    for (int i = 0; i < 4; i++){
-        weight_hexadecimal_input_1[i] = 0;
-        for (int j = 0; j < 32; j++){
-            weight_hexadecimal_input_1[i] += weight_input_1[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print weight_hexadecimal_input_1
-/*
-    printf(" \n Weight_1 in hexadecimal is: \n");
-    for (int i = 0; i < 4; i++){
-        printf("%x\n", weight_hexadecimal_input_1[i]);
-    }
-*/
-
-    ////////////////////////////// WBUFF_1 //////////////////////////////
-    // This function will take weight_hexadecimal_input_1 and then make it such that it can be fed into the WBUFF_1 directly
-    /*
-        For WBUFF_0 each entry in weight_hexadecimal_input_1 will be copied for 7 times and first and last entries will be padded with 0
-    */
-    unsigned int wbuff_1[34];
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 0){
-                wbuff_1[j + 1] = weight_hexadecimal_input_1[i]; 
-            }
-            else if (i == 1){
-                wbuff_1[j + 9] = weight_hexadecimal_input_1[i];
-            }
-            else if(i == 2){
-                wbuff_1[j + 17] = weight_hexadecimal_input_1[i];
-            }
-            else if(i == 3){
-                wbuff_1[j + 25] = weight_hexadecimal_input_1[i];
-            }
-            wbuff_1[0] = 0;
-            wbuff_1[33] = 0;           
-        }
-    }
-
-    // Print wbuff_1
-/*
-    printf(" \n WBUFF_1 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", wbuff_1[i]);
-    }
-*/
-
-    ////////////////////////////// Weight_3 //////////////////////////////
-    char weight_input_3[4][32];
-    weight_2(transformed_weight_matrix[1], weight_input_3[0]);
-    weight_2(transformed_weight_matrix[3], weight_input_3[1]);
-    weight_2(transformed_weight_matrix[5], weight_input_3[2]);
-    weight_2(transformed_weight_matrix[7], weight_input_3[3]);
-
-    // Print weight_input_3
-/*
-    printf("\n Weight_3 is: \n");
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", weight_input_3[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the weight_input_1 to hexadecimal note the binary is not in 2's complement
-    unsigned int weight_hexadecimal_input_3[4];
-    for (int i = 0; i < 4; i++){
-        weight_hexadecimal_input_3[i] = 0;
-        for (int j = 0; j < 32; j++){
-            weight_hexadecimal_input_3[i] += weight_input_3[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print weight_hexadecimal_input_3
-/*
-    printf(" \n Weight_3 in hexadecimal is: \n");
-    for (int i = 0; i < 4; i++){
-        printf("%x\n", weight_hexadecimal_input_3[i]);
-    }
-*/
-
-    ////////////////////////////// WBUFF_3 //////////////////////////////
-    // This function will take weight_hexadecimal_input_3 and then make it such that it can be fed into the WBUFF_3 directly
-    /*
-        For WBUFF_0 each entry in weight_hexadecimal_input_3 will be copied for 7 times and first two entries will be padded with 0
-    */
-    unsigned int wbuff_3[34];
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 8; j++){
-            if(i == 0){
-                wbuff_3[j + 2] = weight_hexadecimal_input_3[i]; 
-            }
-            else if (i == 1){
-                wbuff_3[j + 10] = weight_hexadecimal_input_3[i];
-            }
-            else if(i == 2){
-                wbuff_3[j + 18] = weight_hexadecimal_input_3[i];
-            }
-            else if(i == 3){
-                wbuff_3[j + 26] = weight_hexadecimal_input_3[i];
-            }
-            wbuff_3[0] = 0;
-            wbuff_3[1] = 0;           
-        }
-    }
-
-    // Print wbuff_1
-/*
-    printf(" \n WBUFF_3 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", wbuff_3[i]);
-    }
-*/
-
-    ////////////////////////////// Input_0 //////////////////////////////
-    char input_0[8][32];
-    weight_0(transformed_input_matrix[0], input_0[0]);
-    weight_0(transformed_input_matrix[1], input_0[1]);
-    weight_0(transformed_input_matrix[2], input_0[2]);
-    weight_0(transformed_input_matrix[3], input_0[3]);
-    weight_0(transformed_input_matrix[4], input_0[4]);
-    weight_0(transformed_input_matrix[5], input_0[5]);
-    weight_0(transformed_input_matrix[6], input_0[6]);
-    weight_0(transformed_input_matrix[7], input_0[7]);
-
-    // Print input_0
-/*
-    printf("\n Input_0 is: \n");
-    for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", input_0[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the input_input_0 to hexadecimal note the binary is not in 2's complement
-    unsigned int input_hexadecimal_input_0[8];
-    for (int i = 0; i < 8; i++){
-        input_hexadecimal_input_0[i] = 0;
-        for (int j = 0; j < 32; j++){
-            input_hexadecimal_input_0[i] += input_0[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print input_hexadecimal_input_0
-/*
-    printf(" \n Input_0 in hexadecimal is: \n");
-    for (int i = 0; i < 8; i++){
-        printf("%x\n", input_hexadecimal_input_0[i]);
-    }
-*/
-
-    ////////////////////////////// IBUFF_0 //////////////////////////////
-    // This function will take input_hexadecimal_input_0 and then make it such that it can be fed into the IBUFF_0 directly
-    /*
-        For IBUFF_0 all 8 entries are repated 4 times and last 2 entries are padded with 0
-    */
-   unsigned int ibuff_0[34];
-   for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 8; j++){
-           if (i == 0) {
-            ibuff_0[j] = input_hexadecimal_input_0[j];
-           }
-           else if (i == 1){
-            ibuff_0[j + 8] = input_hexadecimal_input_0[j];
-           }
-           else if (i == 2){
-            ibuff_0[j + 16] = input_hexadecimal_input_0[j];
-           }
-           else if (i == 3){
-            ibuff_0[j + 24] = input_hexadecimal_input_0[j];
-           }
-        }
-        ibuff_0[32] = 0;
-        ibuff_0[33] = 0;
-   }
-
-   // Print ibuff_0
-/*
-    printf(" \n IBUFF_0 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", ibuff_0[i]);
-    }
-*/
-
-////////////////////////////// Input_1 //////////////////////////////
-    char input_1[8][32];
-    weight_2(transformed_input_matrix[0], input_1[0]);
-    weight_2(transformed_input_matrix[1], input_1[1]);
-    weight_2(transformed_input_matrix[2], input_1[2]);
-    weight_2(transformed_input_matrix[3], input_1[3]);
-    weight_2(transformed_input_matrix[4], input_1[4]);
-    weight_2(transformed_input_matrix[5], input_1[5]);
-    weight_2(transformed_input_matrix[6], input_1[6]);
-    weight_2(transformed_input_matrix[7], input_1[7]);
-
-    // Print input_1
-/*
-    printf("\n Input_1 is: \n");
-    for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 32; j++){
-            printf("%d", input_1[i][j]);
-        }
-        printf("\n");
-    }
-*/
-
-    // Convert the input_input_1 to hexadecimal note the binary is not in 2's complement
-    unsigned int input_hexadecimal_input_1[8];
-    for (int i = 0; i < 8; i++){
-        input_hexadecimal_input_1[i] = 0;
-        for (int j = 0; j < 32; j++){
-            input_hexadecimal_input_1[i] += input_1[i][j] * pow(2, 31-j);
-        }
-    }
-
-    // Print input_hexadecimal_input_0
-/*
-    printf(" \n Input_1 in hexadecimal is: \n");
-    for (int i = 0; i < 8; i++){
-        printf("%x\n", input_hexadecimal_input_1[i]);
-    }
-*/
-
-    ////////////////////////////// IBUFF_1 //////////////////////////////
-    // This function will take input_hexadecimal_input_1 and then make it such that it can be fed into the IBUFF_1 directly
-    /*
-        For IBUFF_1 all 8 entries are repated 4 times and first and last  entries are padded with 0
-    */
-   unsigned int ibuff_1[34];
-   for (int i = 0; i < 8; i++){
-        for (int j = 0; j < 8; j++){
-           if (i == 0) {
-            ibuff_1[j + 1] = input_hexadecimal_input_1[j];
-           }
-           else if (i == 1){
-            ibuff_1[j + 9] = input_hexadecimal_input_1[j];
-           }
-           else if (i == 2){
-            ibuff_1[j + 17] = input_hexadecimal_input_1[j];
-           }
-           else if (i == 3){
-            ibuff_1[j + 25] = input_hexadecimal_input_1[j];
-           }
-        }
-        ibuff_1[0] = 0;
-        ibuff_1[33] = 0;
-   }
-
-   // Print ibuff_0
-/*
-    printf(" \n IBUFF_1 is: \n");
-    for (int i = 0; i < 34; i++){
-        printf("%x\n", ibuff_1[i]);
-    }
-*/
-
-    ////////////////////////////// Input_vector stream for FPGA //////////////////////////////
-    /*
-        First the Ibuff_0 and Ibuff_1 will be fed and their values are interleaved like 
-        ibuff_0[0]
-        ibuff_1[0]
-        ibuff_0[1]
-        ibuff_1[1]
-        ...
-        ibuff_0[33]
-        ibuff_1[33]
-
-        Then from location 69 to 136 the weight values from WBUFF_0 and WBUFF_1 will be interleaved like above
-    */
-
-    unsigned int input_vector_stream[204];
-    for (int j = 0; j < 3; j++){
-        if (j == 0){
-            for (int i = 0; i < 34; i++){
-                input_vector_stream[2*i] = ibuff_0[i];
-                input_vector_stream[2*i + 1] = ibuff_1[i];
-            }
-        }
-        else if (j == 1){
-            for (int i = 0; i < 34; i++){
-                input_vector_stream[68 + 2*i] = wbuff_0[i];
-                input_vector_stream[68 + 2*i + 1] = wbuff_1[i];
-            }
-        }
-        else if (j == 2){
-            for (int i = 0; i < 34; i++){
-                input_vector_stream[136 + 2*i] = wbuff_2[i];
-                input_vector_stream[136 + 2*i + 1] = wbuff_3[i];
-            }
-        }
-
-    }
-    // Print input_vector_stream
-/*
-    printf(" \n Input_vector_stream is: \n");
-    for (int i = 0; i < 204; i++){
-        printf("%x\n", input_vector_stream[i]);
-    }
-*/
-
-    ////////////////////////////// Golden Output //////////////////////////////
-    /*
-        This is interleaved like 
-        golden_output[0] = golden_matrix[0][0]
-        golden_output[1] = golden_matrix[1][0]
-        golden_output[2] = golden_matrix[0][1]
-        golden_output[3] = golden_matrix[1][1]
-        golden_output[4] = golden_matrix[0][2]
-        golden_output[5] = golden_matrix[1][2]
-        ...
-        golden_output[63] = golden_matrix[7][7]
-    */
-    int32_t golden_output[64];
-
-    for (int i = 0; i < 8; i++){
-        for (int j  = 0; j < 8; j++){
-            if (i == 0){
-                golden_output[2*j] = golden_matrix[i][j];
-            }
-            else if (i == 1){
-                golden_output[2*j + 1] = golden_matrix[i][j];
-            }
-            else if (i == 2){
-                golden_output[2*j + 16] = golden_matrix[i][j];
-            }
-            else if (i == 3){
-                golden_output[2*j + 17] = golden_matrix[i][j];
-            }
-            else if (i == 4){
-                golden_output[2*j + 32] = golden_matrix[i][j];
-            }
-            else if (i == 5){
-                golden_output[2*j + 33] = golden_matrix[i][j];
-            }
-            else if (i == 6){
-                golden_output[2*j + 48] = golden_matrix[i][j];
-            }
-            else if (i == 7){
-                golden_output[2*j + 49] = golden_matrix[i][j];
-            }
-        }
-    }
-    
-    // Print golden_output
-/*
-    printf("\n Golden Matrix is: \n");
-    print_matrix(golden_matrix);
-
-    printf(" \n Golden Output is: \n");
-    for (int i = 0; i < 64; i++){
-        printf("%d\n", golden_output[i]);
-    }
-*/
-
-
-
-    return 0;
-}
-
-
 
 static unsigned DMA_WORD_PER_BEAT(unsigned _st)
 {
@@ -1308,6 +517,7 @@ static void init_buf (token_t *in, token_t * gold)
 };
 */
 
+/*
 int32_t in_buffs[204] = {
 0xeeccee66,
 0x00000000,
@@ -1514,6 +724,9 @@ int32_t in_buffs[204] = {
 0x0,
 0xa055aaaa
 };
+*/
+
+
 
 
 /*
@@ -1618,9 +831,9 @@ int32_t gold_buff[64] = {
 };
 */
 
+/*
 int32_t gold_buff[64] = {
 307,
-//300,
 426,
 578,
 466,
@@ -1684,6 +897,281 @@ int32_t gold_buff[64] = {
 526,
 209,
 404
+};
+*/
+
+int32_t in_buffs[204] = {
+0xff77ff22,
+0x0,
+0x22cc77,
+0x1111ddcc,
+0xcccc6633,
+0x2211ccff,
+0x885555bb,
+0x11559955,
+0x66aaffdd,
+0x44009977,
+0xdd6677ee,
+0xffcccc00,
+0xee446688,
+0x7722dd44,
+0xbbddccee,
+0xbbee3366,
+0xff77ff22,
+0x4400eeee,
+0x22cc77,
+0x1111ddcc,
+0xcccc6633,
+0x2211ccff,
+0x885555bb,
+0x11559955,
+0x66aaffdd,
+0x44009977,
+0xdd6677ee,
+0xffcccc00,
+0xee446688,
+0x7722dd44,
+0xbbddccee,
+0xbbee3366,
+0xff77ff22,
+0x4400eeee,
+0x22cc77,
+0x1111ddcc,
+0xcccc6633,
+0x2211ccff,
+0x885555bb,
+0x11559955,
+0x66aaffdd,
+0x44009977,
+0xdd6677ee,
+0xffcccc00,
+0xee446688,
+0x7722dd44,
+0xbbddccee,
+0xbbee3366,
+0xff77ff22,
+0x4400eeee,
+0x22cc77,
+0x1111ddcc,
+0xcccc6633,
+0x2211ccff,
+0x885555bb,
+0x11559955,
+0x66aaffdd,
+0x44009977,
+0xdd6677ee,
+0xffcccc00,
+0xee446688,
+0x7722dd44,
+0xbbddccee,
+0xbbee3366,
+0x0,
+0x4400eeee,
+0x0,
+0x0,
+0x55a0555f,
+0x0,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0x55a0555f,
+0xfffa055a,
+0xa5a0055f,
+0xfffa055a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0xa5a0055f,
+0x5055aa0a,
+0x500aaaa5,
+0x5055aa0a,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x500aaaa5,
+0xa5aaf0f0,
+0x5a05fa50,
+0xa5aaf0f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x5a05fa50,
+0xffa055f0,
+0x0,
+0xffa055f0,
+0x0,
+0x0,
+0x0,
+0x0,
+0x50a5055a,
+0x0,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0x50a5055a,
+0xfa0fff55,
+0xfa0af5fa,
+0xfa0fff55,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0xfa0af5fa,
+0xaf5a05fa,
+0x55f5055a,
+0xaf5a05fa,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x55f5055a,
+0xa050ff0f,
+0x5f5fa5a,
+0xa050ff0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x5f5fa5a,
+0x5fa00f0f,
+0x0,
+0x5fa00f0f
+};
+
+int32_t gold_buff[64] = {
+387,
+658,
+331,
+437,
+265,
+354,
+261,
+358,
+339,
+596,
+386,
+626,
+343,
+654,
+299,
+611,
+507,
+408,
+527,
+421,
+358,
+291,
+435,
+310,
+480,
+436,
+528,
+437,
+630,
+501,
+573,
+319,
+405,
+703,
+348,
+442,
+337,
+466,
+283,
+433,
+386,
+622,
+457,
+685,
+433,
+604,
+281,
+570,
+517,
+590,
+294,
+377,
+378,
+359,
+306,
+327,
+398,
+512,
+498,
+553,
+580,
+491,
+398,
+486
 };
 	for (i = 0; i < 1; i++)
 		//for (j = 0; j < 2*reg2; j++)

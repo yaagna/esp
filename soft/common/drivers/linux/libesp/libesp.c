@@ -252,7 +252,7 @@ void esp_run_parallel(esp_thread_info_t* cfg[], unsigned nthreads, unsigned* nac
 			if (info->fd < 0) {
 				contig_handle_t *handle = lookup_handle(info->hw_buf, NULL);
 				contig_free(*handle);
-				die_errno("fopen failed\n");
+				die_errno("fopen failed for path: %s \n", path);
 			}
 		}
 	}
