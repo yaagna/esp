@@ -196,16 +196,16 @@ static int validate_buf(token_t *out, token_t *gold)
 }
 
 
-static void init_buf (token_t *in, token_t * gold, int run)
+static void init_buf (token_t *in, token_t * gold)
 {
 	int i;
 	int j;
 
 	// Added
 
-        int32_t in_buffs_0[204] = { 
-88111133, //IBUF0
-00000000, //IBUF1
+        int32_t in_buffs[204] = { 
+0x88111133, //IBUF0
+0x00000000, //IBUF1
 
 0x11116699,
 0x66aacc33,
@@ -730,7 +730,7 @@ int32_t in_buffs[204] = {
 
 
 
-int32_t gold_buff_0[64] = { 
+int32_t gold_buff[64] = { 
 
 //Col0
 358,
@@ -900,10 +900,13 @@ int32_t gold_buff[64] = {
 };
 */
 
-int32_t in_buffs_1[204] = {
-0xff77ff22,
+/*
+int32_t in_buffs[204] = {
+//0xff77ff22,
 0x0,
-0x22cc77,
+0x0,
+//0x22cc77,
+0xf,
 0x1111ddcc,
 0xcccc6633,
 0x2211ccff,
@@ -1107,7 +1110,7 @@ int32_t in_buffs_1[204] = {
 0x5fa00f0f
 };
 
-int32_t gold_buff_1[64] = {
+int32_t gold_buff[64] = {
 387,
 658,
 331,
@@ -1173,22 +1176,17 @@ int32_t gold_buff_1[64] = {
 398,
 486
 };
+*/
 	for (i = 0; i < 1; i++)
 		//for (j = 0; j < 2*reg2; j++)
 		for (j = 0; j < reg2; j++){
-                        if (run == 0)
-			       in[i * in_words_adj + j] = (token_t) in_buffs_0[j];
-                        else
-			       in[i * in_words_adj + j] = (token_t) in_buffs_1[j];
+			in[i * in_words_adj + j] = (token_t) in_buffs[j];
 			//printf("in_buff = %x\n", in_buffs[j]);
 			}
 	for (i = 0; i < 1; i++)
 		//for (j = 0; j < 2*reg2; j++)
 		for (j = 0; j < reg3; j++) //gold is initialized using reg3
-                        if (run = 0)
-			      gold[i * out_words_adj + j] = (token_t) gold_buff_0[j];
-                        else 
-                              gold[i * out_words_adj + j] = (token_t) gold_buff_0[j];
+			gold[i * out_words_adj + j] = (token_t) gold_buff[j];
 }
 
 
@@ -1288,7 +1286,7 @@ int main(int argc, char * argv[])
 #endif
 			printf("  --------------------\n");
 			//printf("  Generate input...\n");
-			init_buf(mem, gold, 0);
+			init_buf(mem, gold);
 
 			// Pass common configuration parameters
 
@@ -1319,7 +1317,6 @@ int main(int argc, char * argv[])
 			//esp_flush(coherence);
 
 			// Start accelerators
-for (int i = 0; i < 2; i++) {
 			printf("  Start...\n");
 			iowrite32(dev, CMD_REG, CMD_MASK_START);
 
@@ -1334,18 +1331,13 @@ for (int i = 0; i < 2; i++) {
 
 			printf("  Done\n");
 			printf("  validating...\n");
-                        init_buf(mem, gold, 1);
-
-}
 
 			/* Validation */
-/*
 			errors = validate_buf(&mem[out_offset], gold);
 			if (errors)
 				printf("  ... FAIL %d \n", errors);
 			else
 				printf("  ... PASS\n");
-*/
 		}
 		aligned_free(ptable);
 		aligned_free(mem);

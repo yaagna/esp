@@ -21,134 +21,26 @@
 
 typedef int32_t token_t;
 
-
 static unsigned DMA_WORD_PER_BEAT(unsigned _st)
 {
         return (sizeof(void *) / _st);
 }
 
 
-#define SLD_EXAMPLE 0x075
-#define DEV_NAME "sld,example_rtl"
-
+#define SLD_FUSEML 0x04a
+#define DEV_NAME "sld,fuseml_rtl"
 
 /* <<--params-->> */
-const int32_t reg1 = 8; //Value of config reg
-const int32_t reg3 = 64; //BS: contains the number of 32-bit output words from the accelerator
-//const int32_t reg2 = 2; //2 64 bit values (based on NoC), so we get 4 32 bit values (Number of transactions on the NOC)
-const int32_t reg2 = 204; //BS: this will contain the number of 32-bit words sent to the accelerator
-//102 dma transaction
-
-/*
-int32_t in_buffs[reg2] = { 
-
-0x88111133,
-0x11116699,
-0x44ffbb,
-0xffff1188,
-0xaaffcc99,
-0xddaa77ee,
-0x7700bbaa,
-0x668888ff,
-0x88111133,
-0x11116699,
-0x44ffbb,
-0xffff1188,
-0xaaffcc99,
-0xddaa77ee,
-0x7700bbaa,
-0x668888ff,
-0x88111133,
-0x11116699,
-0x44ffbb,
-0xffff1188,
-0xaaffcc99,
-0xddaa77ee,
-0x7700bbaa,
-0x668888ff,
-0x88111133,
-0x11116699,
-0x44ffbb,
-0xffff1188,
-0xaaffcc99,
-0xddaa77ee,
-0x7700bbaa,
-0x668888ff,
-0x00000000,
-0x00000000,
-
-0x00000000,
-0x66aacc33,
-0xaa6699aa,
-0x77eeee33,
-0x55336611,
-0xee111111,
-0xccff9977,
-0xffee4499,
-0xaa55aacc,
-0x66aacc33,
-0xaa6699aa,
-0x77eeee33,
-0x55336611,
-0xee111111,
-0xccff9977,
-0xffee4499,
-0xaa55aacc,
-0x66aacc33,
-0xaa6699aa,
-0x77eeee33,
-0x55336611,
-0xee111111,
-0xccff9977,
-0xffee4499,
-0xaa55aacc,
-0x66aacc33,
-0xaa6699aa,
-0x77eeee33,
-0x55336611,
-0xee111111,
-0xccff9977,
-0xffee4499,
-0xaa55aacc,
-0x00000000,
-
-0x00000000,
-0x00000000,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0xa0a0ff,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0x50affaa0,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xaaa00005,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-0xa55affaf,
-};
-*/
-
+const int32_t reg5 = 1;          // reserved for future use
+const int32_t reg4 = 1;// Used
+const int32_t reg7 = 1;          // reserved for future use
+const int32_t reg6 = 1;          // reserved for future use
+const int32_t reg1 = 8;
+const int32_t reg3 = 64;//Used
+const int32_t reg2 = 204;//Used
+const int32_t reg9 = 1;          // reserved for future use
+const int32_t reg8 = 1;          // reserved for future use
+const int32_t reg10 = 1;          // reserved for future use
 
 static unsigned in_words_adj;
 static unsigned out_words_adj;
@@ -159,8 +51,6 @@ static unsigned out_size;
 static unsigned out_offset;
 static unsigned mem_size;
 
-//int32_t in_buffs[34];
-
 /* Size of the contiguous chunks for scatter/gather */
 #define CHUNK_SHIFT 20
 #define CHUNK_SIZE BIT(CHUNK_SHIFT)
@@ -170,9 +60,16 @@ static unsigned mem_size;
 
 /* User defined registers */
 /* <<--regs-->> */
-#define EXAMPLE_REG1_REG 0x48
-#define EXAMPLE_REG3_REG 0x44
-#define EXAMPLE_REG2_REG 0x40
+#define FUSEML_REG5_REG 0x64
+#define FUSEML_REG4_REG 0x60
+#define FUSEML_REG7_REG 0x5c
+#define FUSEML_REG6_REG 0x58
+#define FUSEML_REG1_REG 0x54
+#define FUSEML_REG3_REG 0x50
+#define FUSEML_REG2_REG 0x4c
+#define FUSEML_REG9_REG 0x48
+#define FUSEML_REG8_REG 0x44
+#define FUSEML_REG10_REG 0x40
 
 
 static int validate_buf(token_t *out, token_t *gold)
@@ -182,16 +79,15 @@ static int validate_buf(token_t *out, token_t *gold)
 	unsigned errors = 0;
 
 	for (i = 0; i < 1; i++)
-		//for (j = 0; j < 2*reg2; j++) {
-		for (j = 0; j < reg3; j++) { //reg3 is the output index
+		//for (j = 0; j < 2 * reg2; j++)
+                for (j = 0; j < reg3; j++) { //reg3 is the output index
 			printf("acc out %d gold: %d, out: %d, gold_addr: %p, out_addr: %p \n", 
 					j, gold[i * out_words_adj + j], out[i * out_words_adj + j], 
 					&gold[i * out_words_adj + j], &out[i * out_words_adj + j]);
-			
+
 			if (gold[i * out_words_adj + j] != out[i * out_words_adj + j])
 				errors++;
-	
-	}
+        }
 	return errors;
 }
 
@@ -201,11 +97,10 @@ static void init_buf (token_t *in, token_t * gold, int run)
 	int i;
 	int j;
 
-	// Added
-
-        int32_t in_buffs_0[204] = { 
-88111133, //IBUF0
-00000000, //IBUF1
+        // Added
+int32_t in_buffs_0[204] = { 
+0x88111133, //IBUF0
+0x00000000, //IBUF1
 
 0x11116699,
 0x66aacc33,
@@ -1173,6 +1068,7 @@ int32_t gold_buff_1[64] = {
 398,
 486
 };
+
 	for (i = 0; i < 1; i++)
 		//for (j = 0; j < 2*reg2; j++)
 		for (j = 0; j < reg2; j++){
@@ -1207,19 +1103,15 @@ int main(int argc, char * argv[])
 	unsigned errors = 0;
 	unsigned coherence;
 
-	
-
 
 	//division factor for number of 32-bit words (reg2) into DMA packets
 	unsigned words_per_dma_packet = DMA_WORD_PER_BEAT(sizeof(token_t));
 
 	if (DMA_WORD_PER_BEAT(sizeof(token_t)) == 0) {
 		in_words_adj = reg2;
-		//out_words_adj = reg2;
 		out_words_adj = reg3;
 	} else {
 		in_words_adj = round_up(reg2, DMA_WORD_PER_BEAT(sizeof(token_t)));
-		//out_words_adj = round_up(reg2, DMA_WORD_PER_BEAT(sizeof(token_t)));
 		out_words_adj = round_up(reg3, DMA_WORD_PER_BEAT(sizeof(token_t)));
 	}
 	in_len = in_words_adj * (1);
@@ -1228,27 +1120,22 @@ int main(int argc, char * argv[])
 	out_size = out_len * sizeof(token_t);
 	out_offset  = in_len;
 	mem_size = (out_offset * sizeof(token_t)) + out_size;
-/*
-        printf("in_len = %d \n",in_len); 
-	printf("out_len = %d \n",out_len);
-	printf("in_size = %d \n",in_size);
-	printf("out_size = %d \n",out_size);
-	printf("out_offset = %d \n",out_offset);
-	printf("mem_size = %d \n",mem_size);
 
-*/	// Search for the device
+
+	// Search for the device
 	printf("Scanning device tree... \n");
 	espdevs_1.addr = 0x60010000;
+
 /*
-	ndev = probe(&espdevs, VENDOR_SLD, SLD_EXAMPLE, DEV_NAME);
+	ndev = probe(&espdevs, VENDOR_SLD, SLD_FUSEML, DEV_NAME);
 	if (ndev == 0) {
-		printf("example not found\n");
+		printf("fuseml not found\n");
 		return 0;
 	}
-*/	
+*/
 	dev = &espdevs_1;
 	ndev = 1;
-	
+
 	for (n = 0; n < ndev; n++) {
 
 		printf("**************** %s.%d ****************\n", DEV_NAME, n);
@@ -1257,12 +1144,12 @@ int main(int argc, char * argv[])
 
 		// Check DMA capabilities
 		if (ioread32(dev, PT_NCHUNK_MAX_REG) == 0) {
-			//printf("  -> scatter-gather DMA is disabled. Abort.\n");
+			printf("  -> scatter-gather DMA is disabled. Abort.\n");
 			return 0;
 		}
 
 		if (ioread32(dev, PT_NCHUNK_MAX_REG) < NCHUNK(mem_size)) {
-			//printf("  -> Not enough TLB entries available. Abort.\n");
+			printf("  -> Not enough TLB entries available. Abort.\n");
 			return 0;
 		}
 
@@ -1309,11 +1196,16 @@ int main(int argc, char * argv[])
 
 			// Pass accelerator-specific configuration parameters
 			/* <<--regs-config-->> */
-		iowrite32(dev, EXAMPLE_REG1_REG, reg1);
-		iowrite32(dev, EXAMPLE_REG3_REG, reg3/words_per_dma_packet); //BS: The number of 64-bit DMA packets for DMA write
-		//iowrite32(dev, EXAMPLE_REG2_REG, reg2);
-		iowrite32(dev, EXAMPLE_REG2_REG, reg2/words_per_dma_packet); //BS: The number of 64-bit DMA packets for DMA read
-
+		iowrite32(dev, FUSEML_REG5_REG, reg5);
+		iowrite32(dev, FUSEML_REG4_REG, reg4);
+		iowrite32(dev, FUSEML_REG7_REG, reg7);
+		iowrite32(dev, FUSEML_REG6_REG, reg6);
+		iowrite32(dev, FUSEML_REG1_REG, reg1);
+		iowrite32(dev, FUSEML_REG3_REG, reg3/words_per_dma_packet);   // The number of 64-bit DMA packets for DMA
+		iowrite32(dev, FUSEML_REG2_REG, reg2/words_per_dma_packet);   // The number of 64-bit DMA packets for DMA read
+		iowrite32(dev, FUSEML_REG9_REG, reg9);
+		iowrite32(dev, FUSEML_REG8_REG, reg8);
+		iowrite32(dev, FUSEML_REG10_REG, reg10);
 
 			// Flush (customize coherence model here)
 			//esp_flush(coherence);
@@ -1326,7 +1218,6 @@ for (int i = 0; i < 2; i++) {
 			// Wait for completion
 			done = 0;
 			while (!done) {
-				printf("Done = %d",done);
 				done = ioread32(dev, STATUS_REG);
 				done &= STATUS_MASK_DONE;
 			}
@@ -1335,14 +1226,12 @@ for (int i = 0; i < 2; i++) {
 			printf("  Done\n");
 			printf("  validating...\n");
                         init_buf(mem, gold, 1);
-
 }
-
 			/* Validation */
 /*
 			errors = validate_buf(&mem[out_offset], gold);
 			if (errors)
-				printf("  ... FAIL %d \n", errors);
+				printf("  ... FAIL\n");
 			else
 				printf("  ... PASS\n");
 */
