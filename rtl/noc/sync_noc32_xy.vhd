@@ -46,6 +46,8 @@ architecture mesh of sync_noc32_xy is
   component router
     generic (
       flow_control : integer;
+      --flow_control : std_logic;
+     
       width        : integer;
       depth        : integer;
       ports        : std_logic_vector(4 downto 0);

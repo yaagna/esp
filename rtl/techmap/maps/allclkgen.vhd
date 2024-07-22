@@ -100,4 +100,55 @@ component clkmuxctrl_unisim
   );
 end component;
 
+
+------------------- Added ----------------------------
+component clkgen_altera_mf 
+  generic (
+    clk_mul  : integer := 1; 
+    clk_div  : integer := 1;
+    sdramen  : integer := 0;
+    sdinvclk : integer := 0;
+    pcien    : integer := 0;
+    pcidll   : integer := 0;
+    pcisysclk: integer := 0;
+    freq     : integer := 25000;
+    clk2xen  : integer := 0);      
+  port (
+    clkin   : in  std_logic;
+    pciclkin: in  std_logic;
+    clk     : out std_logic;			-- main clock
+    clkn    : out std_logic;			-- inverted main clock
+    clk2x   : out std_logic;			-- double clock    
+    sdclk   : out std_logic;			-- SDRAM clock
+    pciclk  : out std_logic;			-- PCI clock
+    cgi     : in clkgen_in_type;
+    cgo     : out clkgen_out_type);
+end component; 
+
+
+component clkgen_stratix10
+  generic (
+    clk_mul  : integer := 1; 
+    clk_div  : integer := 1;
+    sdramen  : integer := 0;
+    sdinvclk : integer := 0;
+    pcien    : integer := 0;
+    pcidll   : integer := 0;
+    pcisysclk: integer := 0;
+    freq     : integer := 25000;
+    clk2xen  : integer := 0);      
+  port (
+    clkin   : in  std_logic;
+    pciclkin: in  std_logic;
+    clk     : out std_logic;			-- main clock
+    clkn    : out std_logic;			-- inverted main clock
+    clk2x   : out std_logic;			-- double clock    
+    sdclk   : out std_logic;			-- SDRAM clock
+    pciclk  : out std_logic;			-- PCI clock
+    cgi     : in clkgen_in_type;
+    cgo     : out clkgen_out_type);
+end component;
+
+------------------- Added Complete -------------------
+
 end;

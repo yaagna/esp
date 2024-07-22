@@ -1,6 +1,7 @@
 module lookahead_router_wrapper
   #(
-    parameter bit FlowControl = noc::kFlowControlAckNack,
+    //parameter bit FlowControl = noc::kFlowControlAckNack,
+    parameter int FlowControl = 0, //noc::kFlowControlAckNack,
     parameter int unsigned Width = 32,
     parameter bit [4:0] Ports = noc::AllPorts,
     parameter int unsigned DEST_SIZE = 1
@@ -32,12 +33,17 @@ module lookahead_router_wrapper
   noc::xy_t position;
   assign position.x = CONST_localx;
   assign position.y = CONST_localy;
+  
+  localparam bit test = 1'b0; 
+  // Testing
+  localparam noc::noc_flow_control_t FlowControl_bit = noc::noc_flow_control_t'(FlowControl[0]);
 
   generate
     if (DEST_SIZE <= 1) begin
       lookahead_router
         #(
-          .FlowControl(FlowControl),
+          //.FlowControl(FlowControl),
+			 .FlowControl(FlowControl_bit),
           .DataWidth(Width - $bits(noc::preamble_t)),
           .Ports(Ports)
           ) router_impl_i
@@ -63,7 +69,8 @@ module lookahead_router_wrapper
     end else begin
       lookahead_router_multicast
         #(
-          .FlowControl(FlowControl),
+          //.FlowControl(FlowControl),
+			 .FlowControl(FlowControl_bit),
           .DataWidth(Width - $bits(noc::preamble_t)),
           .Ports(Ports),
           .DEST_SIZE(DEST_SIZE)

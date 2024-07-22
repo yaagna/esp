@@ -1,0 +1,202 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AHB_RD	nocpackage.vhd	/^  constant AHB_RD       : noc_msg_type := "11010";$/;"	c
+AHB_WR	nocpackage.vhd	/^  constant AHB_WR       : noc_msg_type := "11011";$/;"	c
+ARCH_NOC_FLIT_SIZE	nocpackage.vhd	/^  constant ARCH_NOC_FLIT_SIZE  : natural := PREAMBLE_WIDTH + ARCH_BITS;$/;"	c
+COH_NOC_FLIT_SIZE	nocpackage.vhd	/^  constant COH_NOC_FLIT_SIZE       : natural := PREAMBLE_WIDTH + COH_NOC_WIDTH;$/;"	c
+CPU_DMA	nocpackage.vhd	/^  constant CPU_DMA       : noc_msg_type := "11100";  -- identify DMA from CPU$/;"	c
+DMA_FROM_DEV	nocpackage.vhd	/^  constant DMA_FROM_DEV  : noc_msg_type := "11010";$/;"	c
+DMA_NOC_FLIT_SIZE	nocpackage.vhd	/^  constant DMA_NOC_FLIT_SIZE       : natural := PREAMBLE_WIDTH + DMA_NOC_WIDTH;$/;"	c
+DMA_TO_DEV	nocpackage.vhd	/^  constant DMA_TO_DEV    : noc_msg_type := "11001";$/;"	c
+DVFS_MSG	nocpackage.vhd	/^  constant DVFS_MSG     : noc_msg_type := "00000";$/;"	c
+FLOW_CONTROL	nocpackage.vhd	/^  constant FLOW_CONTROL : integer := 0;$/;"	c
+FWD_GETM	nocpackage.vhd	/^  constant FWD_GETM       : noc_msg_type := "11001";$/;"	c
+FWD_GETM_NOCOH	nocpackage.vhd	/^  constant FWD_GETM_NOCOH : noc_msg_type := "11100";  --Recall on exclusive\/modified$/;"	c
+FWD_GETS	nocpackage.vhd	/^  constant FWD_GETS       : noc_msg_type := "11000";$/;"	c
+FWD_INV	nocpackage.vhd	/^  constant FWD_INV        : noc_msg_type := "11010";  --Invalidation$/;"	c
+FWD_INV_NOCOH	nocpackage.vhd	/^  constant FWD_INV_NOCOH  : noc_msg_type := "11101";  --Recall on shared$/;"	c
+FWD_INV_SPDX	nocpackage.vhd	/^  constant FWD_INV_SPDX   : noc_msg_type := "00010";$/;"	c
+FWD_PUT_ACK	nocpackage.vhd	/^  constant FWD_PUT_ACK    : noc_msg_type := "11011";  --Put Acknowledge$/;"	c
+FWD_REQ_O	nocpackage.vhd	/^  constant FWD_REQ_O      : noc_msg_type := "00110";$/;"	c
+FWD_REQ_Odata	nocpackage.vhd	/^  constant FWD_REQ_Odata  : noc_msg_type := "00001";$/;"	c
+FWD_REQ_S	nocpackage.vhd	/^  constant FWD_REQ_S      : noc_msg_type := "00000";$/;"	c
+FWD_REQ_V	nocpackage.vhd	/^  constant FWD_REQ_V      : noc_msg_type := "00111";$/;"	c
+FWD_RVK_O	nocpackage.vhd	/^  constant FWD_RVK_O      : noc_msg_type := "00100";$/;"	c
+FWD_WB_ACK	nocpackage.vhd	/^  constant FWD_WB_ACK     : noc_msg_type := "00011";$/;"	c
+FWD_WTfwd	nocpackage.vhd	/^  constant FWD_WTfwd      : noc_msg_type := "00101";$/;"	c
+HEADER_ROUTE_E	nocpackage.vhd	/^  constant HEADER_ROUTE_E : natural := 3;$/;"	c
+HEADER_ROUTE_L	nocpackage.vhd	/^  constant HEADER_ROUTE_L : natural := 4;$/;"	c
+HEADER_ROUTE_N	nocpackage.vhd	/^  constant HEADER_ROUTE_N : natural := 0;$/;"	c
+HEADER_ROUTE_S	nocpackage.vhd	/^  constant HEADER_ROUTE_S : natural := 1;$/;"	c
+HEADER_ROUTE_W	nocpackage.vhd	/^  constant HEADER_ROUTE_W : natural := 2;$/;"	c
+INTERRUPT	nocpackage.vhd	/^  constant INTERRUPT    : noc_msg_type := "11111";$/;"	c
+IRQ_ERR_BIT	nocpackage.vhd	/^  constant IRQ_ERR_BIT    : integer := 7;$/;"	c
+IRQ_FORCEERR_BIT	nocpackage.vhd	/^  constant IRQ_FORCEERR_BIT   : integer := 6;$/;"	c
+IRQ_FPEN_BIT	nocpackage.vhd	/^  constant IRQ_FPEN_BIT   : integer := 6;$/;"	c
+IRQ_INDEX_LSB	nocpackage.vhd	/^  constant IRQ_INDEX_LSB      : integer := 8;$/;"	c
+IRQ_INDEX_MSB	nocpackage.vhd	/^  constant IRQ_INDEX_MSB      : integer := 11;$/;"	c
+IRQ_INTACK_BIT	nocpackage.vhd	/^  constant IRQ_INTACK_BIT : integer := 4;$/;"	c
+IRQ_IRL_LSB	nocpackage.vhd	/^  constant IRQ_IRL_LSB        : integer := 0;$/;"	c
+IRQ_IRL_MSB	nocpackage.vhd	/^  constant IRQ_IRL_MSB        : integer := 3;$/;"	c
+IRQ_MSG	nocpackage.vhd	/^  constant IRQ_MSG      : noc_msg_type := "11100";$/;"	c
+IRQ_PWDNEWADDR_LSB	nocpackage.vhd	/^  constant IRQ_PWDNEWADDR_LSB : integer := 2;$/;"	c
+IRQ_PWDNEWADDR_MSB	nocpackage.vhd	/^  constant IRQ_PWDNEWADDR_MSB : integer := 31;$/;"	c
+IRQ_PWDSETADDR_BIT	nocpackage.vhd	/^  constant IRQ_PWDSETADDR_BIT : integer := 7;$/;"	c
+IRQ_PWD_BIT	nocpackage.vhd	/^  constant IRQ_PWD_BIT    : integer := 5;$/;"	c
+IRQ_RESUME_BIT	nocpackage.vhd	/^  constant IRQ_RESUME_BIT     : integer := 4;$/;"	c
+IRQ_RSTRUN_BIT	nocpackage.vhd	/^  constant IRQ_RSTRUN_BIT     : integer := 5;$/;"	c
+MAX_NOC_FLIT_SIZE	nocpackage.vhd	/^  constant MAX_NOC_FLIT_SIZE  : natural := PREAMBLE_WIDTH + MAX_NOC_WIDTH;$/;"	c
+MISC_NOC_FLIT_SIZE	nocpackage.vhd	/^  constant MISC_NOC_FLIT_SIZE  : natural := PREAMBLE_WIDTH + 32;$/;"	c
+MSG_TYPE_WIDTH	nocpackage.vhd	/^  constant MSG_TYPE_WIDTH      : natural := 5;$/;"	c
+MSG_T_PR	nocpackage.vhd	/^  constant MSG_T_PR : std_logic := to_std_logic(1 - USE_SPANDEX);$/;"	c
+NEXT_ROUTING_WIDTH	nocpackage.vhd	/^  constant NEXT_ROUTING_WIDTH  : natural := 5;$/;"	c
+PREAMBLE_1FLIT	nocpackage.vhd	/^  constant PREAMBLE_1FLIT  : noc_preamble_type := "11";$/;"	c
+PREAMBLE_BODY	nocpackage.vhd	/^  constant PREAMBLE_BODY   : noc_preamble_type := "00";$/;"	c
+PREAMBLE_HEADER	nocpackage.vhd	/^  constant PREAMBLE_HEADER : noc_preamble_type := "10";$/;"	c
+PREAMBLE_TAIL	nocpackage.vhd	/^  constant PREAMBLE_TAIL   : noc_preamble_type := "01";$/;"	c
+PREAMBLE_WIDTH	nocpackage.vhd	/^  constant PREAMBLE_WIDTH      : natural := 2;$/;"	c
+REQ_AMO_ADD	nocpackage.vhd	/^  constant REQ_AMO_ADD    : noc_msg_type := "00111";$/;"	c
+REQ_AMO_AND	nocpackage.vhd	/^  constant REQ_AMO_AND    : noc_msg_type := "01000";$/;"	c
+REQ_AMO_MAX	nocpackage.vhd	/^  constant REQ_AMO_MAX    : noc_msg_type := "01011";$/;"	c
+REQ_AMO_MAXU	nocpackage.vhd	/^  constant REQ_AMO_MAXU   : noc_msg_type := "01100";$/;"	c
+REQ_AMO_MIN	nocpackage.vhd	/^  constant REQ_AMO_MIN    : noc_msg_type := "01101";$/;"	c
+REQ_AMO_MINU	nocpackage.vhd	/^  constant REQ_AMO_MINU   : noc_msg_type := "01110";$/;"	c
+REQ_AMO_OR	nocpackage.vhd	/^  constant REQ_AMO_OR     : noc_msg_type := "01001";$/;"	c
+REQ_AMO_SWAP	nocpackage.vhd	/^  constant REQ_AMO_SWAP   : noc_msg_type := "00110";$/;"	c
+REQ_AMO_XOR	nocpackage.vhd	/^  constant REQ_AMO_XOR    : noc_msg_type := "01010";$/;"	c
+REQ_DMA_READ	nocpackage.vhd	/^  constant REQ_DMA_READ  : noc_msg_type := "11110";  -- Read coherent with LLC$/;"	c
+REQ_DMA_WRITE	nocpackage.vhd	/^  constant REQ_DMA_WRITE : noc_msg_type := "11111";  -- Write coherent with LLC$/;"	c
+REQ_GETM_B	nocpackage.vhd	/^  constant REQ_GETM_B   : noc_msg_type := "11110";  --Get Modified (Byte)$/;"	c
+REQ_GETM_HW	nocpackage.vhd	/^  constant REQ_GETM_HW  : noc_msg_type := "11111";  --Get Modified (Half word)$/;"	c
+REQ_GETM_W	nocpackage.vhd	/^  constant REQ_GETM_W   : noc_msg_type := "11001";  --Get Modified (word)$/;"	c
+REQ_GETS_B	nocpackage.vhd	/^  constant REQ_GETS_B   : noc_msg_type := "11100";  --Get Shared (Byte)$/;"	c
+REQ_GETS_HW	nocpackage.vhd	/^  constant REQ_GETS_HW  : noc_msg_type := "11101";  --Get Shared (Half Word)$/;"	c
+REQ_GETS_W	nocpackage.vhd	/^  constant REQ_GETS_W   : noc_msg_type := "11000";  --Get Shared (word)$/;"	c
+REQ_O	nocpackage.vhd	/^  constant REQ_O          : noc_msg_type := "00100";  -- Ownership Write (returns the value before update)$/;"	c
+REQ_Odata	nocpackage.vhd	/^  constant REQ_Odata      : noc_msg_type := "00001";  -- Ownership Write (overwrites all requested data)$/;"	c
+REQ_P2P	nocpackage.vhd	/^  constant REQ_P2P       : noc_msg_type := "11101";$/;"	c
+REQ_PUTM	nocpackage.vhd	/^  constant REQ_PUTM     : noc_msg_type := "11011";  --Put Modified$/;"	c
+REQ_PUTS	nocpackage.vhd	/^  constant REQ_PUTS     : noc_msg_type := "11010";  --Put Shared\/Exclusive$/;"	c
+REQ_REG_RD	nocpackage.vhd	/^  constant REQ_REG_RD   : noc_msg_type := "11000";$/;"	c
+REQ_REG_WR	nocpackage.vhd	/^  constant REQ_REG_WR   : noc_msg_type := "11001";$/;"	c
+REQ_S	nocpackage.vhd	/^  constant REQ_S          : noc_msg_type := "00000";  -- Writer-invalidated Read$/;"	c
+REQ_V	nocpackage.vhd	/^  constant REQ_V          : noc_msg_type := "00101";  -- Self-invalidated Read$/;"	c
+REQ_WB	nocpackage.vhd	/^  constant REQ_WB         : noc_msg_type := "00011";  -- Write-back owned data$/;"	c
+REQ_WT	nocpackage.vhd	/^  constant REQ_WT         : noc_msg_type := "00010";  -- Write-through Write (overwrites all requested data)$/;"	c
+REQ_WTdata	nocpackage.vhd	/^  constant REQ_WTdata     : noc_msg_type := "00110";  -- Write-through Write (returns the value before update)$/;"	c
+REQ_WTfwd	nocpackage.vhd	/^  constant REQ_WTfwd      : noc_msg_type := "01111";$/;"	c
+RESERVED_WIDTH	nocpackage.vhd	/^  constant RESERVED_WIDTH      : natural := 8;$/;"	c
+ROUTER_DEPTH	nocpackage.vhd	/^  constant ROUTER_DEPTH : integer := 4;$/;"	c
+ROUTER_PORTS	noc32_xy.vhd	/^  constant ROUTER_PORTS : ports_vec := set_router_ports(XLEN, YLEN);$/;"	c
+ROUTE_NOC3	nocpackage.vhd	/^  constant ROUTE_NOC3 : std_logic_vector(1 downto 0) := "01";$/;"	c
+ROUTE_NOC4	nocpackage.vhd	/^  constant ROUTE_NOC4 : std_logic_vector(1 downto 0) := "10";$/;"	c
+ROUTE_NOC5	nocpackage.vhd	/^  constant ROUTE_NOC5 : std_logic_vector(1 downto 0) := "11";$/;"	c
+RSP_AHB_RD	nocpackage.vhd	/^  constant RSP_AHB_RD   : noc_msg_type := "11110";$/;"	c
+RSP_DATA	nocpackage.vhd	/^  constant RSP_DATA     : noc_msg_type := "11000";  --CacheLine$/;"	c
+RSP_DATA_DMA	nocpackage.vhd	/^  constant RSP_DATA_DMA       : noc_msg_type := MSG_T_PR & MSG_T_PR & "011"; -- message type in common with original ESP caches$/;"	c
+RSP_EDATA	nocpackage.vhd	/^  constant RSP_EDATA    : noc_msg_type := "11001";  --Cache Line (Exclusive)$/;"	c
+RSP_INV_ACK	nocpackage.vhd	/^  constant RSP_INV_ACK  : noc_msg_type := "11010";  --Invalidation Acknowledge$/;"	c
+RSP_INV_ACK_SPDX	nocpackage.vhd	/^  constant RSP_INV_ACK_SPDX   : noc_msg_type := "00010";$/;"	c
+RSP_NACK	nocpackage.vhd	/^  constant RSP_NACK           : noc_msg_type := "00011";$/;"	c
+RSP_O	nocpackage.vhd	/^  constant RSP_O              : noc_msg_type := "00110";$/;"	c
+RSP_Odata	nocpackage.vhd	/^  constant RSP_Odata          : noc_msg_type := "00001";$/;"	c
+RSP_P2P	nocpackage.vhd	/^  constant RSP_P2P       : noc_msg_type := "11100";$/;"	c
+RSP_REG_RD	nocpackage.vhd	/^  constant RSP_REG_RD   : noc_msg_type := "11101";$/;"	c
+RSP_RVK_O	nocpackage.vhd	/^  constant RSP_RVK_O          : noc_msg_type := "00100";$/;"	c
+RSP_S	nocpackage.vhd	/^  constant RSP_S              : noc_msg_type := "00000";$/;"	c
+RSP_V	nocpackage.vhd	/^  constant RSP_V              : noc_msg_type := "00101";$/;"	c
+RSP_WT	nocpackage.vhd	/^  constant RSP_WT             : noc_msg_type := "00111";$/;"	c
+RSP_WTdata	nocpackage.vhd	/^  constant RSP_WTdata         : noc_msg_type := "01000";$/;"	c
+YX_WIDTH	nocpackage.vhd	/^  constant YX_WIDTH            : natural := 3;$/;"	c
+arch_noc_flit_pad	nocpackage.vhd	/^  constant arch_noc_flit_pad : std_logic_vector(MAX_NOC_FLIT_SIZE - ARCH_NOC_FLIT_SIZE downto 0) := (others => '0');$/;"	c
+arch_noc_flit_type	nocpackage.vhd	/^  subtype arch_noc_flit_type is std_logic_vector(ARCH_NOC_FLIT_SIZE-1 downto 0);$/;"	T
+arch_noc_flit_vector	nocpackage.vhd	/^  type arch_noc_flit_vector is array (natural range <>) of arch_noc_flit_type;$/;"	t
+bin	inferred_async_fifo.vhd	/^  type t_counter_block is record$/;"	r
+bin_x	inferred_async_fifo.vhd	/^    bin, bin_next, gray, gray_next : t_counter;$/;"	r
+coh_noc_flit_pad	nocpackage.vhd	/^  constant coh_noc_flit_pad : std_logic_vector(MAX_NOC_FLIT_SIZE - COH_NOC_FLIT_SIZE downto 0) := (others => '0');$/;"	c
+coh_noc_flit_type	nocpackage.vhd	/^  subtype coh_noc_flit_type is std_logic_vector(COH_NOC_FLIT_SIZE-1 downto 0);$/;"	T
+coh_noc_flit_vector	nocpackage.vhd	/^  type coh_noc_flit_vector is array (natural range <>) of coh_noc_flit_type;$/;"	t
+create_header	nocpackage.vhd	/^  function create_header ($/;"	f
+create_header_mcast	nocpackage.vhd	/^function create_header_mcast ($/;"	f
+dest_arr	nocpackage.vhd	/^  type dest_arr is array (natural range <>) of local_yx;$/;"	t
+dma_noc_flit_pad	nocpackage.vhd	/^  constant dma_noc_flit_pad : std_logic_vector(MAX_NOC_FLIT_SIZE - DMA_NOC_FLIT_SIZE downto 0) := (others => '0');$/;"	c
+dma_noc_flit_type	nocpackage.vhd	/^  subtype dma_noc_flit_type is std_logic_vector(DMA_NOC_FLIT_SIZE-1 downto 0);$/;"	T
+dma_noc_flit_vector	nocpackage.vhd	/^  type dma_noc_flit_vector is array (natural range <>) of dma_noc_flit_type;$/;"	t
+f_bin2gray	inferred_async_fifo.vhd	/^  function f_bin2gray(bin : unsigned) return unsigned is$/;"	f
+f_gen_dummy_vec	genram_pkg.vhd	/^  function f_gen_dummy_vec (val : std_logic; size : natural) return std_logic_vector is$/;"	f
+f_gray2bin	inferred_async_fifo.vhd	/^  function f_gray2bin(gray : unsigned) return unsigned is$/;"	f
+f_log2_size	genram_pkg.vhd	/^  function f_log2_size (A : natural) return natural is$/;"	f
+f_zeros	genram_pkg.vhd	/^  function f_zeros(size : integer)$/;"	f
+fifo0	fifo.vhd	/^entity fifo0 is$/;"	e
+fifo1	fifo1.vhd	/^entity fifo1 is$/;"	e
+fifo2	fifo2.vhd	/^entity fifo2 is$/;"	e
+fifo3	fifo3.vhd	/^entity fifo3 is$/;"	e
+genram_pkg	genram_pkg.vhd	/^package body genram_pkg is$/;"	P
+genram_pkg	genram_pkg.vhd	/^package genram_pkg is$/;"	P
+get_destination_x	nocpackage.vhd	/^  function get_destination_x ($/;"	f
+get_destination_x_misc	nocpackage.vhd	/^  function get_destination_x_misc ($/;"	f
+get_destination_y	nocpackage.vhd	/^  function get_destination_y ($/;"	f
+get_destination_y_misc	nocpackage.vhd	/^  function get_destination_y_misc ($/;"	f
+get_msg_type	nocpackage.vhd	/^  function get_msg_type ($/;"	f
+get_msg_type_misc	nocpackage.vhd	/^  function get_msg_type_misc ($/;"	f
+get_origin_x	nocpackage.vhd	/^  function get_origin_x ($/;"	f
+get_origin_x_misc	nocpackage.vhd	/^  function get_origin_x_misc ($/;"	f
+get_origin_y_misc	nocpackage.vhd	/^  function get_origin_y_misc ($/;"	f
+get_preamble	nocpackage.vhd	/^  function get_preamble ($/;"	f
+get_preamble_misc	nocpackage.vhd	/^  function get_preamble_misc ($/;"	f
+get_reserved_field	nocpackage.vhd	/^  function get_reserved_field ($/;"	f
+get_reserved_field_misc	nocpackage.vhd	/^  function get_reserved_field_misc ($/;"	f
+get_unused_msb_field	nocpackage.vhd	/^  function get_unused_msb_field ($/;"	f
+get_unused_msb_field_misc	nocpackage.vhd	/^  function get_unused_msb_field_misc ($/;"	f
+haddr	nocpackage.vhd	/^    y     : local_yx;$/;"	r
+handshake_vec	noc32_xy.vhd	/^  type handshake_vec is array (TILES_NUM-1 downto 0) of$/;"	t
+hmask	nocpackage.vhd	/^    haddr : integer;$/;"	r
+inferred_async_fifo	inferred_async_fifo.vhd	/^entity inferred_async_fifo is$/;"	e
+is_getm	nocpackage.vhd	/^  function is_getm ($/;"	f
+is_gets	nocpackage.vhd	/^  function is_gets ($/;"	f
+large_to_narrow_flit	nocpackage.vhd	/^  function large_to_narrow_flit ($/;"	f
+local_vec	noc32_xy.vhd	/^  type local_vec is array (TILES_NUM-1 downto 0) of local_yx;$/;"	t
+local_yx	nocpackage.vhd	/^  subtype local_yx is std_logic_vector(YX_WIDTH-1 downto 0);$/;"	T
+localx	noc32_xy.vhd	/^  constant localx       : local_vec := set_tile_x(XLEN, YLEN, 3);$/;"	c
+localy	noc32_xy.vhd	/^  constant localy       : local_vec := set_tile_y(XLEN, YLEN, 3);$/;"	c
+max_noc_flit_type	nocpackage.vhd	/^  subtype max_noc_flit_type is std_logic_vector(MAX_NOC_FLIT_SIZE downto 0);$/;"	T
+misc_noc_flit_pad	nocpackage.vhd	/^  constant misc_noc_flit_pad : std_logic_vector(MAX_NOC_FLIT_SIZE - MISC_NOC_FLIT_SIZE downto 0) := (others => '0');$/;"	c
+misc_noc_flit_type	nocpackage.vhd	/^  subtype misc_noc_flit_type is std_logic_vector(33 downto 0);$/;"	T
+misc_noc_flit_vector	nocpackage.vhd	/^  type misc_noc_flit_vector is array (natural range <>) of misc_noc_flit_type;$/;"	t
+narrow_to_large_flit	nocpackage.vhd	/^  function narrow_to_large_flit ($/;"	f
+ncpu_log	nocpackage.vhd	/^  function ncpu_log($/;"	f
+noc32_synchronizers	noc32_synchronizers.vhd	/^entity noc32_synchronizers is$/;"	e
+noc32_xy	noc32_xy.vhd	/^entity noc32_xy is$/;"	e
+noc_msg_type	nocpackage.vhd	/^  subtype noc_msg_type is std_logic_vector(MSG_TYPE_WIDTH-1 downto 0);$/;"	T
+noc_preamble_type	nocpackage.vhd	/^  subtype noc_preamble_type is std_logic_vector(PREAMBLE_WIDTH-1 downto 0);$/;"	T
+nocpackage	nocpackage.vhd	/^package body nocpackage is$/;"	P
+nocpackage	nocpackage.vhd	/^package nocpackage is$/;"	P
+ports_vec	noc32_xy.vhd	/^  type ports_vec is array (TILES_NUM-1 downto 0) of std_logic_vector(4 downto 0);$/;"	t
+ports_vec	nocpackage.vhd	/^  subtype ports_vec is std_logic_vector(4 downto 0);$/;"	T
+reg_type	fifo.vhd	/^	type reg_type is array(0 to depth-1) of std_logic_vector(width-1 downto 0);$/;"	t
+reg_type	fifo2.vhd	/^	type reg_type is array(0 to depth-1) of std_logic_vector(width-1 downto 0);$/;"	t
+reg_type	fifo3.vhd	/^	type reg_type is array(0 to depth-1) of std_logic_vector(width-1 downto 0);$/;"	t
+reserved_field_type	nocpackage.vhd	/^  subtype reserved_field_type is std_logic_vector(RESERVED_WIDTH-1 downto 0);$/;"	T
+router	router.vhd	/^entity router is$/;"	e
+routing_vec	nocpackage.vhd	/^  type routing_vec is array (natural range <>) of std_logic_vector(NEXT_ROUTING_WIDTH - 1 downto 0);$/;"	t
+set_router_ports	noc32_xy.vhd	/^  function set_router_ports($/;"	f
+set_router_ports	nocpackage.vhd	/^  function set_router_ports ($/;"	f
+set_tile_x	noc32_xy.vhd	/^  function set_tile_x ($/;"	f
+set_tile_y	noc32_xy.vhd	/^  function set_tile_y ($/;"	f
+sync_noc32_xy	sync_noc32_xy.vhd	/^entity sync_noc32_xy is$/;"	e
+sync_noc_set	sync_noc_set.vhd	/^entity sync_noc_set is$/;"	e
+sync_noc_xy	sync_noc_xy.vhd	/^entity sync_noc_xy is$/;"	e
+t_counter	inferred_async_fifo.vhd	/^  subtype t_counter is unsigned(f_log2_size(g_size) downto 0);$/;"	T
+t_counter_block	inferred_async_fifo.vhd	/^  type t_counter_block is record$/;"	t
+t_generic_ram_init	genram_pkg.vhd	/^  type t_generic_ram_init is array (integer range <>, integer range <>) of std_logic;$/;"	t
+t_mem_type	inferred_async_fifo.vhd	/^  type   t_mem_type is array (0 to g_size-1) of std_logic_vector(g_data_width-1 downto 0);$/;"	t
+tile_mem_info	nocpackage.vhd	/^  type tile_mem_info is record$/;"	t
+tile_mem_info_none	nocpackage.vhd	/^  constant tile_mem_info_none : tile_mem_info := ($/;"	c
+tile_mem_info_vector	nocpackage.vhd	/^  type tile_mem_info_vector is array (natural range <>) of tile_mem_info;$/;"	t
+x	nocpackage.vhd	/^  type tile_mem_info is record$/;"	r
+y	nocpackage.vhd	/^    x     : local_yx;$/;"	r
+yx_vec	nocpackage.vhd	/^  type yx_vec is array (natural range <>) of std_logic_vector(2 downto 0);$/;"	t

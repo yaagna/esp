@@ -80,7 +80,8 @@ module lookahead_router
    input  logic [4:0] stop_in
    );
 
-  localparam bit FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
+  //localparam bit FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
+  localparam logic FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
 
   localparam int unsigned ReservedWidth =
     DataWidth - 2*$bits(noc::xy_t) - $bits(noc::message_t) - $bits(noc::direction_t);

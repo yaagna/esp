@@ -37,7 +37,7 @@ package gencomp is
 
 -- technologies and libraries
 
-constant NTECH : integer := 4;
+constant NTECH : integer := 6;
 type tech_ability_type is array (0 to NTECH) of integer;
 
 constant inferred    : integer := 0;
@@ -45,6 +45,8 @@ constant virtex7     : integer := 1;
 constant virtexup    : integer := 2;
 constant virtexu     : integer := 3;
 constant asic        : integer := 4;
+constant stratix10        : integer := 5;
+constant altera        : integer := 6;
 --constant gf12        : integer := 4;
 
 
@@ -53,7 +55,7 @@ constant DEFPADTECH  : integer := inferred;
 constant DEFFABTECH  : integer := inferred;
 
 constant is_fpga : tech_ability_type :=
-	(inferred => 1, virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(inferred => 1, virtex7 => 1, virtexup => 1, virtexu => 1, stratix10 => 1, altera => 1, others => 0);
 
 constant infer_mul : tech_ability_type := is_fpga;
 
@@ -119,33 +121,33 @@ constant has_2pram : tech_ability_type :=
 	(others => 1);
 
 constant has_dpram : tech_ability_type :=
-	(virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(virtex7 => 1, virtexup => 1, virtexu => 1, altera => 1, stratix10 => 1, others => 0);
 
 constant has_sram64 : tech_ability_type :=
 	(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, asic => 1, others => 0);
 	--(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, gf12 => 1, others => 0);
 
 constant has_sram128bw : tech_ability_type :=
-	(virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(virtex7 => 1, virtexup => 1, virtexu => 1, altera => 1, stratix10 => 1, others => 0);
 
 constant has_sram128 : tech_ability_type :=
 	(virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
 
 constant has_sram156bw : tech_ability_type :=
-	(virtex7 => 0, virtexup => 1, virtexu => 1, others => 0);
+	(virtex7 => 0, virtexup => 1, virtexu => 1, altera => 0, stratix10 => 1, others => 0);
 
 constant has_sram256bw : tech_ability_type :=
-	(virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(virtex7 => 1, virtexup => 1, virtexu => 1, altera => 1, stratix10 => 1, others => 0);
 
 constant has_sram_2pbw : tech_ability_type :=
         (others => 0);
 
 constant has_srambw : tech_ability_type :=
-	(virtex7 => 1, virtexup => 1, virtexu => 1, asic => 1, others => 0);
+	(virtex7 => 1, virtexup => 1, virtexu => 1, asic => 1, stratix10 => 1,others => 0);
 	--(virtex7 => 1, virtexup => 1, virtexu => 1, gf12 => 1, others => 0);
 
 constant has_2pfifo : tech_ability_type :=
-        (others => 0);
+        (altera => 1, stratix10 => 1, others => 0);
 
 -- ram_raw_latency - describes how many edges on the write-port clock that
 -- must pass before data is commited to memory. for example, if the write data
@@ -208,14 +210,14 @@ constant is_unisim : tech_ability_type :=
         (virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
 
 constant has_tap : tech_ability_type :=
-	(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, altera => 1, stratix10 => 1, others => 0);
 
 constant has_clkgen : tech_ability_type :=
-	(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, others => 0);
+	(inferred => 0, virtex7 => 1, virtexup => 1, virtexu => 1, altera => 1, stratix10 => 1, others => 0);
 
 
 constant has_ddr2phy: tech_ability_type :=
-       (inferred => 0, virtex7 => 1, others => 0);
+       (inferred => 0, virtex7 => 1, stratix10 => 1, others => 0);
 
 constant ddr2phy_builtin_pads: tech_ability_type :=
        (others => 0);
@@ -264,10 +266,10 @@ constant ddrphy_ptctrl: tech_ability_type :=
 constant has_syncreg: tech_ability_type :=
      (inferred => 0, others => 0);
 
-constant has_pll : tech_ability_type :=
+constant has_pll : tech_ability_type :=                 ------------this is not in gaisler
      (virtex7 => 1, virtexup => 1, virtexu => 1,  others => 0);
 
-constant has_dco : tech_ability_type :=
+constant has_dco : tech_ability_type :=                 ------------this is not in gaisler
      (asic => 1, inferred => 1, others => 0);
 --     (gf12 => 1, others => 0);
 
@@ -280,7 +282,8 @@ type tech_table_type is array (0 to NTECH) of tech_description;
 constant tech_table :     tech_table_type := (
   inferred  => "inferred  ", virtex7   => "virtex7   ",
   virtexup  => "virtexup  ", virtexu   => "virtexu   ",
-  asic      => "asic      ");
+  asic      => "asic      ", altera    => "altera    ",
+  stratix10  => "stratix10 ");
 --  gf12      => "gf12      ");
 
 -- pragma translate_on

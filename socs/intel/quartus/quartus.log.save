@@ -1,0 +1,18 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 24272
+# Start logging UI actions
+# Mon Jul 22 14:53:13 2024
+# **************************************************
+[Mon Jul 22 14:53:17 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Mon Jul 22 14:53:19 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Mon Jul 22 14:53:21 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Jul 22 14:53:23 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Jul 22 14:53:30 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Jul 22 14:53:30 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Jul 22 14:53:32 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Jul 22 14:55:44 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Locate Node > 'Locate in Design &File' was pressed
+# **************************************************
+# Mon Jul 22 14:56:32 2024
+# End of logging UI actions
+# **************************************************

@@ -1,0 +1,20 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'esp_1|tiles_gen[1].cpu_tile.tile_cpu_i|tile_cpu_1|ibex_cpu_gen.ibex_ahb_wrap_1|ibex_wrap_i|u_core|core_clock_gate_i|gen_generic.u_impl_generic|en_latch~derived'
+Slack : -7.203
+TNS   : -5603.454
+Corner: Slow 900mV 100C Model
+
+Type  : Hold 'esp_1|tiles_gen[1].cpu_tile.tile_cpu_i|tile_cpu_1|ibex_cpu_gen.ibex_ahb_wrap_1|ibex_wrap_i|u_core|core_clock_gate_i|gen_generic.u_impl_generic|en_latch~derived'
+Slack : 0.137
+TNS   : 0.000
+Corner: Slow 900mV -40C Model
+
+Type  : Minimum Pulse Width 'esp_1|tiles_gen[1].cpu_tile.tile_cpu_i|tile_cpu_1|ibex_cpu_gen.ibex_ahb_wrap_1|ibex_wrap_i|u_core|core_clock_gate_i|gen_generic.u_impl_generic|en_latch~derived'
+Slack : 0.416
+TNS   : 0.000
+Corner: Slow 900mV 100C Model
+
+------------------------------------------------------------

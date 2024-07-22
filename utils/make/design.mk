@@ -3,7 +3,7 @@
 
 ### Supported technology libraries ###
 #ASICLIBS = inferred gf12 sky130
-FPGALIBS = virtex7 virtexu virtexup
+FPGALIBS = virtex7 virtexu virtexup stratix10
 
 
 ### Check for technology library definition ###

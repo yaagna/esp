@@ -96,7 +96,8 @@ module lookahead_router_multicast
     bit [DEST_SIZE-1:0] val; // 1 indicates corresponding destination still needs to be served
   } packet_info_t;
 
-  localparam bit FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
+  //localparam bit FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
+  localparam logic FifoBypassEnable = FlowControl == noc::kFlowControlAckNack;
 
   typedef struct packed {
     noc::preamble_t preamble;

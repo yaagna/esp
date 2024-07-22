@@ -172,6 +172,17 @@ begin
 		   xwrite, waddress, datain);
   end generate;
 
+------------------------ Added --------------------------------
+
+-- NOTE: port 1 on altsyncram must be a read port due to Cyclone II M4K write issue
+  alt : if (tech = altera) or (tech = stratix10) generate
+    x0 : altera_syncram_dp generic map (abits, dbits)
+         port map (rclk, raddress, vgnd, dataoutx, renable2, gnd,
+                   wclk, waddress, datain, open, xwrite, xwrite);
+  end generate;
+
+------------------------ Added --------------------------------
+
   --asicx : if tech = gf12 generate
   asicx : if tech = asic generate
     x0 : asic_syncram_2p generic map (abits, dbits)

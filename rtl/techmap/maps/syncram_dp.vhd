@@ -166,5 +166,15 @@ begin
                    clk2, address2, datain2, dataout2x, xxenable2, xwrite2);
   end generate;
 
+----------------------------- Added ------------------------------------
+
+  alt : if (tech = altera) or (tech = stratix10) generate
+    x0 : altera_syncram_dp generic map (abits, dbits)
+         port map (clk1, address1, datain1, dataout1x, xxenable1, xwrite1,
+                   clk2, address2, datain2, dataout2x, xxenable2, xwrite2);
+  end generate;
+
+----------------------------- Added Complete ---------------------------
+
 end;
 

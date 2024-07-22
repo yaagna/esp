@@ -66,6 +66,29 @@ end;
 architecture struct of clkgen is
 signal intclk, sdintclk : std_ulogic;
 signal lock : std_ulogic;
+component clkgen_stratix10
+  generic (
+    clk_mul  : integer := 1; 
+    clk_div  : integer := 1;
+    sdramen  : integer := 0;
+    sdinvclk : integer := 0;
+    pcien    : integer := 0;
+    pcidll   : integer := 0;
+    pcisysclk: integer := 0;
+    freq     : integer := 25000;
+    clk2xen  : integer := 0);      
+  port (
+    clkin   : in  std_logic;
+    pciclkin: in  std_logic;
+    clk     : out std_logic;			-- main clock
+    clkn    : out std_logic;			-- inverted main clock
+    clk2x   : out std_logic;			-- double clock    
+    sdclk   : out std_logic;			-- SDRAM clock
+    pciclk  : out std_logic;			-- PCI clock
+    cgi     : in clkgen_in_type;
+    cgo     : out clkgen_out_type);
+end component;
+
 begin
   gen : if (has_clkgen(tech) = 0) generate
     sdintclk <= pciclkin when (PCISYSCLK = 1 and PCIEN /= 0) else clkin;
@@ -93,5 +116,15 @@ begin
     generic map (clk_mul, clk_div, freq)
     port map (clkin, clk, clkn, clk2x ,cgi, cgo);
   end generate;
+
+----------------------- Added -----------------------
+  str10 : if (tech = stratix10) generate
+    v : clkgen_stratix10
+    generic map (clk_mul, clk_div, sdramen, noclkfb, pcien, pcidll, pcisysclk, freq, clk2xen)
+    port map (clkin, pciclkin, clk, clkn, clk2x, sdclk, pciclk, cgi, cgo);
+  end generate;
+
+----------------------- Added Complete -----------------
+
 end;
 

@@ -1,0 +1,7 @@
+1. alldco.vhd = need to check for intel
+
+2. allddr.vhd = need to check how this works for intel as it has axcel is it intel but is it for intel or for something else?
+
+3. allpads.vhd = This has apa3 instances are they for intel though? Also they have voltage of 0 while unisim has something called 'x33v'
+
+4. allpll.vhd =  gaisler doesn't have this file so need to check for intel
