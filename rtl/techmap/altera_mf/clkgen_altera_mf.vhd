@@ -24,8 +24,8 @@ use ieee.std_logic_1164.all;
 --library maps;
 use work.gencomp.all;
 -- pragma translate_off
---library altera_mf;
-use work.altpll;
+library altera_mf;
+use altera_mf.altpll;
 -- pragma translate_on
 
 entity altera_pll is

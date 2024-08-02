@@ -27,9 +27,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
 -- pragma translate_off
---library altera_mf;
-use work.altera_mf_components.all;
-use work.sld_virtual_jtag;
+library altera_mf;
+use altera_mf.altera_mf_components.all;
+use altera_mf.sld_virtual_jtag;
 -- pragma translate_on
 
 entity altera_tap is

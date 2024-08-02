@@ -21,7 +21,18 @@ VHDL_PKGS += $(THIRDPARTY_VHDL_PKGS)
 VHDL_PKGS += $(TOP_VHDL_RTL_PKGS)
 
 ## VHDL Source
+#VHDL_SRCS += $(foreach f, $(shell strings $(FLISTS)/vhdl.flist), $(ESP_ROOT)/rtl/$(f))
+
+### Added inplace of Line 24 ###
+
+ifeq ($(TECHLIB), stratix10)
+VHDL_SRCS += $(foreach f, $(shell strings $(FLISTS)/vhdl_intel.flist), $(ESP_ROOT)/rtl/$(f))
+else
 VHDL_SRCS += $(foreach f, $(shell strings $(FLISTS)/vhdl.flist), $(ESP_ROOT)/rtl/$(f))
+endif
+
+### Complete ###
+
 VHDL_SRCS += $(foreach f, $(shell strings $(FLISTS)/cores_vhdl.flist), $(if $(findstring cores/$(CPU_ARCH), $(f)), $(ESP_ROOT)/rtl/$(f),))
 
 ifeq ($(TECHLIB), inferred)

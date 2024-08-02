@@ -28,8 +28,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 -- pragma translate_off
---library altera_mf;
-use work.altsyncram;
+library altera_mf;
+use altera_mf.altera_mf_components.all;
 -- pragma translate_on
 
 entity altera_syncram_dp is
@@ -38,6 +38,7 @@ entity altera_syncram_dp is
   );
   port (
     clk1     : in std_ulogic;
+    --clk      : in std_ulogic;         --- Added to make tge RAM single clock TDP RAM
     address1 : in std_logic_vector((abits -1) downto 0);
     datain1  : in std_logic_vector((dbits -1) downto 0);
     dataout1 : out std_logic_vector((dbits -1) downto 0);
@@ -78,37 +79,37 @@ architecture behav of altera_syncram_dp is
     generic (
       address_aclr_a  :       string := "UNUSED";
       address_aclr_b  :       string := "NONE";
-      address_reg_b   :       string := "CLOCK1";
+      address_reg_b   :       string := "CLOCK0";	-- changed to CLOCK0
       byte_size       :       natural := 8;
       byteena_aclr_a  :       string := "UNUSED";
       byteena_aclr_b  :       string := "NONE";
-      byteena_reg_b   :       string := "CLOCK1";
+      byteena_reg_b   :       string := "CLOCK0";	-- changed to CLOCK0
       clock_enable_core_a     :       string := "USE_INPUT_CLKEN";
       clock_enable_core_b     :       string := "USE_INPUT_CLKEN";
-      clock_enable_input_a    :       string := "NORMAL";
-      clock_enable_input_b    :       string := "NORMAL";
-      clock_enable_output_a   :       string := "NORMAL";
-      clock_enable_output_b   :       string := "NORMAL";
-      intended_device_family  :       string := "unused";
+      clock_enable_input_a    :       string := "BYPASS";		--- Changed from NORMAL to BYPASS
+      clock_enable_input_b    :       string := "BYPASS";		--- Changed from NORMAL to BYPASS
+      clock_enable_output_a   :       string := "BYPASS";		--- Changed from NORMAL to BYPASS
+      clock_enable_output_b   :       string := "BYPASS";		--- Changed from NORMAL to BYPASS
+      intended_device_family  :       string := "STRATIX 10";
       enable_ecc      :       string := "FALSE";
       implement_in_les        :       string := "OFF";
       indata_aclr_a   :       string := "UNUSED";
       indata_aclr_b   :       string := "NONE";
-      indata_reg_b    :       string := "CLOCK1";
+      indata_reg_b    :       string := "CLOCK0";	-- changed to CLOCK0
       init_file       :       string := "UNUSED";
       init_file_layout        :       string := "PORT_A";
       maximum_depth   :       natural := 0;
-      numwords_a      :       natural := 0;
-      numwords_b      :       natural := 0;
+      numwords_a      :       natural := 0;			-- Changed from 0 to 2 by me
+      numwords_b      :       natural := 0;			-- Changed from 0 to 2 by me
       operation_mode  :       string := "BIDIR_DUAL_PORT";
       outdata_aclr_a  :       string := "NONE";
       outdata_aclr_b  :       string := "NONE";
-      outdata_reg_a   :       string := "UNREGISTERED";
-      outdata_reg_b   :       string := "UNREGISTERED";
+      outdata_reg_a   :       string := "UNREGISTERED";		--- Changed from UNREGISTERED to CLOCK0
+      outdata_reg_b   :       string := "UNREGISTERED";		--- Changed from UNREGISTERED to CLOCK0
       power_up_uninitialized  :       string := "FALSE";
       ram_block_type  :       string := "AUTO";
       rdcontrol_aclr_b        :       string := "NONE";
-      rdcontrol_reg_b :       string := "CLOCK1";
+      rdcontrol_reg_b :       string := "CLOCK0";	-- changed to CLOCK0
       read_during_write_mode_mixed_ports      :       string := "DONT_CARE";
       read_during_write_mode_port_a   :       string := "NEW_DATA_NO_NBE_READ";
       read_during_write_mode_port_b   :       string := "NEW_DATA_NO_NBE_READ";
@@ -120,9 +121,10 @@ architecture behav of altera_syncram_dp is
       widthad_b       :       natural := 1;
       wrcontrol_aclr_a        :       string := "UNUSED";
       wrcontrol_aclr_b        :       string := "NONE";
-      wrcontrol_wraddress_reg_b    :       string := "CLOCK1";
+      wrcontrol_wraddress_reg_b    :       string := "CLOCK0";	-- changed to CLOCK0
       lpm_hint        :       string := "UNUSED";
-      lpm_type        :       string := "altsyncram"
+      lpm_type        :       string := "altera_syncram"		--- changed from altsyncram to altera_syncram
+      --clock1 : natural := 1
       );
     port(
       aclr0   :       in std_logic := '0';
@@ -174,19 +176,23 @@ begin
   u0 : altsyncram 
     generic map (
       WIDTH_A => dbits, WIDTHAD_A => abits,
-      WIDTH_B => dbits, WIDTHAD_B => abits)
+      WIDTH_B => dbits, WIDTHAD_B => abits, 
+      numwords_a => 2**abits, numwords_b => 2**abits )      --- Added by me
+      -- OPERATION_MODE => "DUAL_PORT"	)								--- Added by me
     port map ( 
-      address_a => address_a, address_b => address_b, clock0 => clk1,
-      clock1 => clk2, data_a => datain1, data_b => datain2, 
+      address_a => address_a, address_b => address_b, clock0 => clk2,
+      clock1 => clk2, 
+      --clocken1 => '0', clocken3 => '0',		
+      data_a => datain1, data_b => datain2, 
       q_a => dataout1, q_b => dataout2, rden_b => enable2,
       wren_a => write1, wren_b => write2);
 end;
 
 library ieee;
 use ieee.std_logic_1164.all;
---library techmap;
+-- library techmap;
 
-entity altera_syncram is
+entity altera_syncram_sp is					--- chnaged the name from 'altera_syncram' to 'altera_syncram_sp'
   generic ( abits : integer := 9; dbits : integer := 32);
   port (
     clk     : in std_ulogic;
@@ -198,7 +204,7 @@ entity altera_syncram is
   );
 end;
 
-architecture behav of altera_syncram is
+architecture behav of altera_syncram_sp is
 component altera_syncram_dp
   generic ( abits : integer := 10; dbits : integer := 8 );
   port (
@@ -235,12 +241,12 @@ end;
 
 library ieee;
 use ieee.std_logic_1164.all;
---library techmap;
---library grlib;
+-- library techmap;
+-- library grlib;
 use work.stdlib.all;
 -- pragma translate_off
---library altera_mf;
-use work.altsyncram;
+library altera_mf;
+use altera_mf.altsyncram;	-- changed to altera_mf_components.all
 -- pragma translate_on
 
 entity altera_syncram_be is
@@ -263,7 +269,10 @@ architecture behav of altera_syncram_be is
     widthad_a	: natural;
     widthad_b	: natural := 1;
     byte_size   : integer := 0;
-    width_byteena_a : integer := 1
+    width_byteena_a : integer := 1;
+	 numwords_a : natural := 2**abits;		--- Added by me
+	 numwords_b : natural := 2**abits;		--- Added by me
+	OPERATION_MODE : string := "DUAL_PORT" 		--- Added by me
   );
   port(
     address_a	: in std_logic_vector(widthad_a-1 downto 0);
@@ -288,7 +297,8 @@ begin
     generic map (
       WIDTH_A => dbits, WIDTHAD_A => abits,
       WIDTH_B => dbits, WIDTHAD_B => abits, byte_size => 8,
-      width_byteena_a => dbits/8 )
+      width_byteena_a => dbits/8,
+      OPERATION_MODE => "DUAL_PORT" )		--- Added by me
     port map ( 
       address_a => address, clock0 => clk, clock1 => clk, 
       data_a => datain, q_a => dataout, wren_a => write1,
@@ -297,12 +307,12 @@ end;
 
 library ieee;
 use ieee.std_logic_1164.all;
-library techmap;
---library grlib;
+-- library techmap;
+-- library grlib;
 use work.stdlib.all;
 -- pragma translate_off
---library altera_mf;
-use work.altsyncram;
+library altera_mf;
+use altera_mf.altera_mf_components.all; 	-- chnaged to altera_mf_components.all
 -- pragma translate_on
 
 entity altera_syncram128bw is
@@ -362,12 +372,12 @@ end;
 
 library ieee;
 use ieee.std_logic_1164.all;
---library techmap;
---library grlib;
+-- library techmap;
+-- library grlib;
 use work.stdlib.all;
 -- pragma translate_off
---library altera_mf;
-use work.altsyncram;
+library altera_mf;
+use altera_mf.altera_mf_components.all;		-- changed to altera_mf_components.all
 -- pragma translate_on
 
 entity altera_syncram256bw is
@@ -427,10 +437,10 @@ end;
 library ieee;
 use ieee.std_logic_1164.all;
 -- pragma translate_off
---library altera_mf;
-use work.dcfifo;
+library altera_mf;
+use altera_mf.dcfifo;
 -- pragma translate_on
---library grlib;
+-- library grlib;
 use work.stdlib.log2;
 
 entity altera_fifo_dp is

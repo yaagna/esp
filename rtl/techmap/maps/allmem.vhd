@@ -282,7 +282,7 @@ package allmem is
 
 ----------------------------------- Added --------------------------------------------
 
-component altera_syncram
+component altera_syncram_sp					--- changed name to altera_syncram_sp
   generic ( abits : integer := 10; dbits : integer := 8 );
   port (
     clk      : in std_ulogic;

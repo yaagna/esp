@@ -334,11 +334,11 @@ set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/co
 set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/cores/ibex/ibex/dv/uvm/core_ibex/common/prim/prim_clock_gating.sv
 set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/cores/ibex/ibex/vendor/lowrisc_ip/ip/prim_generic/rtl/prim_generic_clock_gating.sv
 set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/cores/ibex/ibex/shared/rtl/timer.sv
-set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/cores/ibex/ibex/vendor/lowrisc_ip/ip/prim_xilinx/rtl/prim_xilinx_clock_gating.sv
+#set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/rtl/cores/ibex/ibex/vendor/lowrisc_ip/ip/prim_xilinx/rtl/prim_xilinx_clock_gating.sv
 set_global_assignment -name SYSTEMVERILOG_FILE /home/yaagna/intel_esp/esp/socs/intel/socgen/esp/plic_regmap.sv
 
 ### Added one ####
 set_global_assignment -name VHDL_FILE /home/yaagna/intel_esp/esp/rtl/techmap/altera_mf/clkgen_altera_mf.vhd
 set_global_assignment -name VHDL_FILE /home/yaagna/intel_esp/esp/rtl/techmap/altera_mf/memory_altera_mf.vhd
 set_global_assignment -name VHDL_FILE /home/yaagna/intel_esp/esp/rtl/techmap/altera_mf/tap_altera_mf.vhd
-set_global_assignment -name VHDL_FILE /home/yaagna/intel_esp/esp/socs/intel/quartus/stratixv/clkgen_stratixv.vhd
+set_global_assignment -name VHDL_FILE /home/yaagna/intel_esp/esp/rtl/techmap/altera_mf/clkgen_stratix10.vhd

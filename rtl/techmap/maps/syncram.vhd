@@ -113,7 +113,7 @@ begin
 ---------------------------- Added -------------------------------------
 
   alt : if (tech = altera) or (tech = stratix10) generate
-    x0 : altera_syncram generic map(abits, dbits)
+    x0 : altera_syncram_sp generic map(abits, dbits)		--- changed the anme to altera_syncram_sp
          port map(clk, address, datain, dataoutx, xenable, xwrite);
   end generate;
 

@@ -20,7 +20,7 @@ use work.net.all;
 use work.svga_pkg.all;
 --library unisim;
 -- pragma translate_off
-use work.sim.all;
+ use work.sim.all;
 -- pragma translate_on
 --use unisim.VCOMPONENTS.all;
 use work.monitor_pkg.all;
@@ -344,13 +344,13 @@ begin
 
 --  end generate gen_mig;
 
-  gen_mig_model : if (SIMULATION /= true) generate     ----- changed added '/'
+  gen_mig_model : if (SIMULATION = true) generate     
     -- pragma translate_off
 
     mig_ahbram : ahbram_sim
       generic map (
         hindex => 0,
-        tech   => 0,
+        tech   => 5, --- changed to 5
         kbytes => 2 * 1024,
         pipe   => 0,
         maccsz => AHBDW,

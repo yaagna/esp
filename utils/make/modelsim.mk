@@ -9,7 +9,7 @@ VCOMOPT += -suppress vcom-1491
 VLOGOPT += -suppress 2275
 VLOGOPT += -suppress 2583
 VLOGOPT += -suppress 2892
-ifneq ($(filter $(TECHLIB),$(FPGALIBS)),)
+ifneq ($(filter $(TECHLIB),$(XIL_FPGALIBS)),)
 VLOGOPT += +define+XILINX_FPGA
 endif
 VLOGOPT += $(INCDIR_MODELSIM)
@@ -20,9 +20,19 @@ VSIMOPT += -suppress 8617
 VSIMOPT += -suppress 151
 VSIMOPT += -suppress 143
 VSIMOPT += -suppress 8386
-ifneq ($(filter $(TECHLIB),$(FPGALIBS)),)
+
+### ifneq ($(filter $(TECHLIB),$(FPGALIBS)),)
+### VSIMOPT += -L secureip_ver -L unisims_ver
+### endif
+
+### Added In place of line 24 to 26 ###
+
+ifneq ($(filter $(TECHLIB), $(XIL_FPGALIBS)),)
 VSIMOPT += -L secureip_ver -L unisims_ver
 endif
+
+### Complete ###
+
 VSIMOPT += -uvmcontrol=disable -suppress 3009,2685,2718 -t fs
 VSIMOPT += +notimingchecks
 VSIMOPT += $(SIMTOP) $(EXTRA_SIMTOP)
@@ -53,10 +63,52 @@ $(ESP_ROOT)/.cache/modelsim/xilinx_lib:
 	sed -i '/\[msg_system\]/a suppress = 8780,8891,1491,12110\nwarning = 8891' modelsim.ini; \
 	cd ../;
 
+#### Added ####
+
+$(ESP_ROOT)/.cache/intel_lib:
+	@echo "Intel libraries should be used"
+	$(QUIET_MKDIR)mkdir -p $@
+	@echo "quartus_sh --simlib_comp -tool questasim -language vhdl -tool_path /opt/mentor/modeltech/bin/ -directory -directory $(ESP_ROOT)/.cache/intel_lib/ -rtl_only -rtl_only" > $@/simlib.tcl; \
+	cd $(ESP_ROOT)/.cache/intel_lib; \
+	if ! quartus_sh --simlib_comp -tool questasim -language vhdl -tool_path /opt/mentor/modeltech/bin/ -directory $(ESP_ROOT)/.cache/intel_lib/ -rtl_only; then \
+		echo "$(SPACES)ERROR: Intel library compilation failed!"; rm -rf intel_lib modelsim.ini; exit 1; \
+	fi; \
+	lib_path=$$(cat modelsim.ini | cut -d " " -f 3); \
+	sed -i 's/; Show_source = 1/Show_source = 1/g' modelsim.ini; \
+	sed -i 's/; Show_Warning3 = 0/Show_Warning3 = 0/g' modelsim.ini; \
+	sed -i 's/; Show_Warning5 = 0/Show_Warning5 = 0/g' modelsim.ini; \
+	sed -i 's/; StdArithNoWarnings = 1/StdArithNoWarnings = 1/g' modelsim.ini; \
+	sed -i 's/; NumericStdNoWarnings = 1/NumericStdNoWarnings = 1/g' modelsim.ini; \
+	sed -i 's/VoptFlow = 1/VoptFlow = 0/g' modelsim.ini; \
+	sed -i '/suppress = [0-9]\+/d' modelsim.ini; \
+	sed -i '/\[msg_system\]/a suppress = 8780,8891,1491,12110\nwarning = 8891' modelsim.ini; \
+	cd ../;
+
+#### Complete ####
+
+# modelsim/modelsim.ini: $(ESP_ROOT)/.cache/modelsim/xilinx_lib
+#	$(QUIET_MAKE)mkdir -p modelsim
+#	@cp $(ESP_ROOT)/.cache/modelsim/modelsim.ini $@
+
+
+#### Added Part ####
+
+# Extract CFG_FABTECH value from socmap.vhd
+SOCMAP_PATH := $(shell find $(DESIGN_PATH) -name socmap.vhd) 
+CFG_FABTECH := $(shell grep 'constant CFG_FABTECH' $(SOCMAP_PATH) r| sed -E 's/.*:= *([^;]*);/\1/')
+#@echo $(CFG_FABTECH)
+ifeq ($(CFG_FABTECH), stratix10)
+modelsim/modelsim.ini: $(ESP_ROOT)/.cache/intel_lib
+	@echo "map file: $(CFG_FABTECH)"
+	@echo "Intel libs are used"
+	$(QUIET_MAKE)mkdir -p modelsim
+	@cp $(ESP_ROOT)/.cache/intel_lib/modelsim.ini $@
+else 
 modelsim/modelsim.ini: $(ESP_ROOT)/.cache/modelsim/xilinx_lib
 	$(QUIET_MAKE)mkdir -p modelsim
 	@cp $(ESP_ROOT)/.cache/modelsim/modelsim.ini $@
-
+endif
+#### Complete   ####
 
 ### Compile simulation source files ###
 # Note that vmake fails to find unisim.vcomponents, however produces the correct
@@ -130,6 +182,7 @@ sim: sim-compile
 	fi;
 
 sim-gui: sim-compile
+	@echo $(CFG_FABTECH)
 	$(QUIET_RUN)cd modelsim; \
 	if test -e $(DESIGN_PATH)/vsim.tcl; then \
 		$(VSIM) -do "do $(DESIGN_PATH)/vsim.tcl"; \

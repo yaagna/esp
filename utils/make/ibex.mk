@@ -150,10 +150,21 @@ VLOGOPT += -suppress 13262
 VLOGOPT += -suppress 2286
 VLOGOPT += -permissive
 VLOGOPT += +define+WT_DCACHE
-ifneq ($(filter $(TECHLIB),$(FPGALIBS)),)
+
+## ifneq ($(filter $(TECHLIB),$(FPGALIBS)),)
+# use Xilinx-based primitives for FPGA
+## VLOGOPT += +define+PRIM_DEFAULT_IMPL=prim_pkg::ImplXilinx
+## endif
+
+### Added inplcae of line 154 ###
+
+ifneq ($(filter $(TECHLIB),$(XIL_FPGALIBS)),)
 # use Xilinx-based primitives for FPGA
 VLOGOPT += +define+PRIM_DEFAULT_IMPL=prim_pkg::ImplXilinx
 endif
+
+### Complete ###
+
 VLOGOPT += -pedanticerrors
 VLOGOPT += -suppress 2583
 VLOGOPT += -suppress 13314
@@ -166,7 +177,18 @@ XMLOGOPT += -UNCLOCKEDSVA
 ### Incdir and RTL
 ifeq ("$(CPU_ARCH)", "ibex")
 INCDIR  += $(IBEX)/vendor/lowrisc_ip/ip/prim/rtl
+## VERILOG_IBEX += $(foreach f, $(shell strings $(FLISTS)/ibex_vlog.flist), $(IBEX)/$(f))
+
+### Added inplce of Line 180 ###
+
+ifneq ($(filter $(TECHLIB),$(INTEL_FPGALIBS)),)
+VERILOG_IBEX += $(foreach f, $(shell strings $(FLISTS)/ibex_vlog_intel.flist), $(IBEX)/$(f))
+else 
 VERILOG_IBEX += $(foreach f, $(shell strings $(FLISTS)/ibex_vlog.flist), $(IBEX)/$(f))
+endif
+
+### Complete ###
+
 VERILOG_IBEX += $(DESIGN_PATH)/$(ESP_CFG_BUILD)/plic_regmap.sv
 THIRDPARTY_VLOG += $(VERILOG_IBEX)
 endif
