@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2024 Columbia University, System Level Design Group
 // SPDX-License-Identifier: Apache-2.0
-#ifndef __ESP_CFG_001_H__
-#define __ESP_CFG_001_H__
+#ifndef __ESP_CFG_004_H__
+#define __ESP_CFG_004_H__
 
 #include "libesp.h"
 #include "fuseml_rtl.h"
@@ -13,7 +13,7 @@ unsigned _st;
 unsigned words_per_dma_packet = 2;
 
 /* <<--params-def-->> */
-#define REG5 0         // If this is '0' then it is unsigned multiplication if this is '1' then it is signed multiplication
+#define REG5 1         // If this is '0' then it is unsigned multiplication if this is '1' then it is signed multiplication
 #define REG4 0   //Used
 #define REG7 1         // reserved for future use
 #define REG6 1         // reserved for future use
@@ -44,7 +44,7 @@ const int32_t reg10 = REG10;
 
 #define NACC 1
 
-struct fuseml_rtl_access fuseml_cfg_001[] = {
+struct fuseml_rtl_access fuseml_cfg_004[] = {
 	{
 		/* <<--descriptor-->> */
 		.reg5 = REG5,
@@ -68,13 +68,13 @@ struct fuseml_rtl_access fuseml_cfg_001[] = {
 	}
 };
 
-esp_thread_info_t cfg_001[] = {
+esp_thread_info_t cfg_004[] = {
 	{
 		.run = true,
 		.devname = "fuseml_rtl.0",
 		.ioctl_req = FUSEML_RTL_IOC_ACCESS,
-		.esp_desc = &(fuseml_cfg_001[0].esp),
+		.esp_desc = &(fuseml_cfg_004[0].esp),
 	}
 };
 
-#endif /* __ESP_CFG_001_H__ */
+#endif /* __ESP_CFG_004_H__ */

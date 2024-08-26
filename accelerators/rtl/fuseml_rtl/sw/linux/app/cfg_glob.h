@@ -1,7 +1,5 @@
-// Copyright (c) 2011-2024 Columbia University, System Level Design Group
-// SPDX-License-Identifier: Apache-2.0
-#ifndef __ESP_CFG_002_H__
-#define __ESP_CFG_002_H__
+#ifndef __ESP_CFG_100_H__
+#define __ESP_CFG_100_H__
 
 #include "libesp.h"
 #include "fuseml_rtl.h"
@@ -12,43 +10,45 @@ unsigned _st;
 
 unsigned words_per_dma_packet = 2;
 
+
+////////////////// for unsigned int 4x4 //////////////////
 /* <<--params-def-->> */
-#define REG5 0         // If this is '0' then it is unsigned multiplication if this is '1' then it is signed multiplication
+#define REG5 1         // If this is '0' then it is unsigned multiplication if this is '1' then it is signed multiplication
 #define REG4 3   //Used
 #define REG7 1         // reserved for future use
 #define REG6 1         // reserved for future use
 #define REG1 8
 #define REG3 4  //Used
-#define REG2 24  //Used
+#define REG2 24 //Used
 #define REG9 1         // reserved for future use
 #define REG8 1         // reserved for future use
 #define REG10 1        // reserved for future use
-
-////// Paramaterized ///////
-//int32_t reg_3;
-//reg_3 = REG3/words_per_dma_packet;
-//int32_t reg_2;
-//reg_2 = REG2/words_per_dma_packet;
+////////////////// for unsigned int 4x4 //////////////////
 
 /* <<--params-->> */
-const int32_t reg5 = REG5;
-const int32_t reg4 = REG4;
-const int32_t reg7 = REG7;
-const int32_t reg6 = REG6;
-const int32_t reg1 = REG1;
-const int32_t reg3 = REG3;
-const int32_t reg2 = REG2;
-const int32_t reg9 = REG9;
-const int32_t reg8 = REG8;
-const int32_t reg10 = REG10;
+ int32_t reg5 = REG5;
+ int32_t reg4 = REG4;
+ int32_t reg7 = REG7;
+ int32_t reg6 = REG6;
+ int32_t reg1 = REG1;
+ int32_t reg3 = REG3;
+ int32_t reg2 = REG2;
+ int32_t reg9 = REG9;
+ int32_t reg8 = REG8;
+ int32_t reg10 = REG10;
+
+int32_t dma_word_reg3 = 0;
+int32_t dma_word_reg2 = 0;
+
 
 #define NACC 1
 
-struct fuseml_rtl_access fuseml_cfg_002[] = {
+struct fuseml_rtl_access fuseml_cfg_100[] = {
 	{
+		/* <<--unsigned int 4x4-->> */	//0
 		/* <<--descriptor-->> */
-		.reg5 = REG5,
-		.reg4 = REG4,
+		.reg5 = 0,
+		.reg4 = 0,
 		.reg7 = REG7,
 		.reg6 = REG6,
 		.reg1 = REG1,
@@ -68,13 +68,13 @@ struct fuseml_rtl_access fuseml_cfg_002[] = {
 	}
 };
 
-esp_thread_info_t cfg_002[] = {
+esp_thread_info_t cfg_100[] = {
 	{
 		.run = true,
 		.devname = "fuseml_rtl.0",
 		.ioctl_req = FUSEML_RTL_IOC_ACCESS,
-		.esp_desc = &(fuseml_cfg_002[0].esp),
+		.esp_desc = &(fuseml_cfg_100[0].esp),
 	}
 };
 
-#endif /* __ESP_CFG_001_H__ */
+#endif /* __ESP_CFG_100_H__ */

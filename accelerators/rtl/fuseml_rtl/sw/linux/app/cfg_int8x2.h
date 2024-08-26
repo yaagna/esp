@@ -13,7 +13,7 @@ unsigned _st;
 unsigned words_per_dma_packet = 2;
 
 /* <<--params-def-->> */
-#define REG5 1         // reserved for future use
+#define REG5 0         // If this is '0' then it is unsigned multiplication if this is '1' then it is signed multiplication
 #define REG4 2   //Used
 #define REG7 1         // reserved for future use
 #define REG6 1         // reserved for future use

@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2024 Columbia University, System Level Design Group
 // SPDX-License-Identifier: Apache-2.0
 #include "libesp.h"
-#include "cfg_int8x8.h"
+#include "cfg_mat_test.h"
 //#include "fuseml.h"
 
 
@@ -41,7 +41,7 @@ void generate_random_matrix(int matrix[SIZE][SIZE]) {
     // Fill the matrix with random values between -128 and 127
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            matrix[i][j] = rand() % 256;
+            matrix[i][j] = rand() % 4 - 2;
         }
     }
 }
@@ -95,8 +95,8 @@ void d2b(int decimal, char binary[]){
     int i = 0;
     // Convert decimal to binary
     for (i = 7; i >= 0; i--){
-        binary[i] = decimal % 2;
-        decimal = decimal / 2;
+        binary[i] = (decimal & 1) ? 1 : 0;
+        decimal >>= 1;
     }
 }
 
@@ -560,6 +560,176 @@ static void init_parameters()
 	size = (out_offset * sizeof(token_t)) + out_size;
 }
 
+/// Added for Arbitary Size Matrix  ///
+
+//#define MATRIX_SIZE 2
+#define BASE_MATRIX_SIZE 32
+
+// Function to generate matrix size n x n
+void generate_matrix(int n, int matrix[n][n]) {
+    // Seed the random number generator with millisecond precision
+    //srand (time(NULL) * 1000 + clock());
+    // srand((unsigned int)time(NULL));
+    // give a test seed for random number generation
+    srand(1);
+
+    // Fill the matrix with random values between -2 and 1
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            matrix[i][j] = rand() % 4 - 2;
+        }
+    }
+}
+
+// Function to multiply two matrices
+void matrix_multi(int n, int matrix1[n][n], int matrix2[n][n], int result[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            result[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                result[i][j] += matrix1[i][k] * matrix2[k][j];
+            }
+        }
+    }
+}
+
+// Function to add two matrices
+void matrix_add(int n, int matrix1[n][n], int matrix2[n][n], int result [n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            result[i][j] = matrix1[i][j] + matrix2[i][j];
+        }
+    }
+}
+
+// Function to generate submatrix from big matrix
+void generate_submatrix(int n, int matrix[n][n], int submatrix_1[n/2][n/2], int submatrix_2[n/2][n/2], int submatrix_3[n/2][n/2], int submatrix_4[n/2][n/2]) {
+    // Submatrix_1 is the top left quarter of the matrix
+    for (int i = 0; i < n/2; i++) {
+        for (int j = 0; j < n/2; j++) {
+            submatrix_1[i][j] = matrix[i][j];
+        }
+    }
+
+    // Submatrix_2 is the top right quarter of the matrix
+    for (int i = 0; i < n/2; i++) {
+        for (int j = n/2; j < n; j++) {
+            submatrix_2[i][j - n/2] = matrix[i][j];
+        }
+    }
+
+    // Submatrix_3 is the bottom left quarter of the matrix
+    for (int i = n/2; i < n; i++) {
+        for (int j = 0; j < n/2; j++) {
+            submatrix_3[i - n/2][j] = matrix[i][j];
+        }
+    }
+
+    // Submatrix_4 is the bottom right quarter of the matrix
+    for (int i = n/2; i < n; i++) {
+        for (int j = n/2; j < n; j++) {
+            submatrix_4[i - n/2][j - n/2] = matrix[i][j];
+        }
+    }
+}
+
+// Strassen Function for 4x4 matrix 
+// This will get called from strassen_matrix8x8
+void strassen_matrix(int matrix_size, int matrix1[matrix_size][matrix_size], int matrix2[matrix_size][matrix_size], int result_matrix[matrix_size][matrix_size]) {
+    
+    if (matrix_size == BASE_MATRIX_SIZE) {
+        matrix_multi(BASE_MATRIX_SIZE, matrix1, matrix2, result_matrix);
+    }
+    else {
+        int submatrix_size = matrix_size / 2;
+
+        // For Input Matrix                 matrix1 is Input Matrix
+        int a[submatrix_size][submatrix_size];
+        int b[submatrix_size][submatrix_size];
+        int c[submatrix_size][submatrix_size];
+        int d[submatrix_size][submatrix_size];
+        
+        // For Weight Matrix                matrix2 is Weight Matrix
+        int e[submatrix_size][submatrix_size];
+        int f[submatrix_size][submatrix_size];
+        int g[submatrix_size][submatrix_size];
+        int h[submatrix_size][submatrix_size];
+        
+        // Generate input submatrices
+        generate_submatrix(matrix_size, matrix1, a, b, c, d);
+
+        // Generate weight submatrices
+        generate_submatrix(matrix_size, matrix2, e, f, g, h);
+
+        // For partial results
+        int ae[submatrix_size][submatrix_size];
+        int af[submatrix_size][submatrix_size];
+        int bg[submatrix_size][submatrix_size];
+        int bh[submatrix_size][submatrix_size];
+        int ce[submatrix_size][submatrix_size];
+        int cf[submatrix_size][submatrix_size];
+        int dg[submatrix_size][submatrix_size];
+        int dh[submatrix_size][submatrix_size];
+
+        // For partial result matrix
+        int C11[submatrix_size][submatrix_size];
+        int C12[submatrix_size][submatrix_size];
+        int C21[submatrix_size][submatrix_size];
+        int C22[submatrix_size][submatrix_size];
+
+        // Multiply the submatrices to get partial results
+        if (submatrix_size == BASE_MATRIX_SIZE) {
+            matrix_multi(BASE_MATRIX_SIZE, a, e, ae);
+            matrix_multi(BASE_MATRIX_SIZE, a, f, af);
+            matrix_multi(BASE_MATRIX_SIZE, b, g, bg);
+            matrix_multi(BASE_MATRIX_SIZE, b, h, bh);
+            matrix_multi(BASE_MATRIX_SIZE, c, e, ce);
+            matrix_multi(BASE_MATRIX_SIZE, c, f, cf);
+            matrix_multi(BASE_MATRIX_SIZE, d, g, dg);
+            matrix_multi(BASE_MATRIX_SIZE, d, h, dh);
+        }
+        else {
+            strassen_matrix(submatrix_size, a, e, ae);
+            strassen_matrix(submatrix_size, a, f, af);
+            strassen_matrix(submatrix_size, b, g, bg);
+            strassen_matrix(submatrix_size, b, h, bh);
+            strassen_matrix(submatrix_size, c, e, ce);
+            strassen_matrix(submatrix_size, c, f, cf);
+            strassen_matrix(submatrix_size, d, g, dg);
+            strassen_matrix(submatrix_size, d, h, dh); 
+        }
+
+
+        // Add the partial results to get partial matrices
+        matrix_add(submatrix_size, ae, bg, C11);
+        matrix_add(submatrix_size, af, bh, C12);
+        matrix_add(submatrix_size, ce, dg, C21);
+        matrix_add(submatrix_size, cf, dh, C22);
+
+        // Combine the partial matrices to get the final result
+        for (int i = 0; i < submatrix_size; i++) {
+            for (int j = 0; j < submatrix_size; j++) {
+                result_matrix[i][j] = C11[i][j];
+                result_matrix[i][j + submatrix_size] = C12[i][j];
+                result_matrix[i + submatrix_size][j] = C21[i][j];
+                result_matrix[i + submatrix_size][j + submatrix_size] = C22[i][j];
+            }
+        }
+    }
+    
+}
+
+// Function to print the matrix
+void print_matrixi(int n, int matrix[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+/// Added Complete ///
 
 int main(int argc, char **argv)
 {
@@ -571,13 +741,13 @@ int main(int argc, char **argv)
 	init_parameters();
 
 	buf = (token_t *) esp_alloc(size);
-	cfg_002[0].hw_buf = buf;
+	cfg_008[0].hw_buf = buf;
     
 	gold = malloc(out_size);
 
 	init_buffer(buf, gold);
 
-	printf("\n====== %s ======\n\n", cfg_002[0].devname);
+	printf("\n====== %s ======\n\n", cfg_008[0].devname);
 	/* <<--print-params-->> */
 	printf("  .reg5 = %d\n", reg5);
 	printf("  .reg4 = %d\n", reg4);
@@ -591,7 +761,16 @@ int main(int argc, char **argv)
 	printf("  .reg10 = %d\n", reg10);
 	printf("\n  ** START **\n");
 
-	esp_run(cfg_002, NACC);
+	clock_t b = clock();
+
+	esp_run(cfg_008, NACC);
+
+	clock_t e = clock();
+
+	double cpu_time = ((double) (e - b));
+    	printf("Time taken for Acc: %f\n", cpu_time);
+
+	
 
 	printf("\n  ** DONE **\n");
 
@@ -605,7 +784,60 @@ int main(int argc, char **argv)
 	else
 		printf("+ Test FAILED\n");
 
-	printf("\n====== %s ======\n\n", cfg_002[0].devname);
+	printf("\n====== %s ======\n\n", cfg_008[0].devname);
+
+	//// Added ////
+	int MATRIX_SIZE;
+    	printf("Enter the size of the matrix: ");
+    	scanf("%d", &MATRIX_SIZE);
+    	int matrix_size = MATRIX_SIZE;
+
+    	int input_matrix[matrix_size][matrix_size];
+    	int weight_matrix[matrix_size][matrix_size];
+    	int golden_result[matrix_size][matrix_size];
+
+    	// Time taken for this code to run
+    	clock_t begin = clock();
+
+    	generate_matrix(matrix_size, input_matrix);
+    	generate_matrix(matrix_size, weight_matrix);
+
+    	// Golden matrix multiplication
+    	matrix_multi(matrix_size, input_matrix, weight_matrix, golden_result);
+
+    	// Strassen matrix multiplication
+    	int strassen_result[matrix_size][matrix_size];
+    	strassen_matrix(matrix_size, input_matrix, weight_matrix, strassen_result);
+
+    	// Print the golden result
+    	//printf("Golden result:\n");
+    	//print_matrixi(MATRIX_SIZE, golden_result);
+    	//printf("\n");
+
+    	// Print the strassen result
+    	//printf("Strassen result:\n");
+    	//print_matrixi(MATRIX_SIZE, strassen_result);
+
+    	int matrix_error = 0;
+    	for (int i = 0; i < matrix_size; i++) {
+        	for (int j = 0; j < matrix_size; j++) {
+            		if (golden_result[i][j] != strassen_result[i][j]) {
+                		matrix_error = 1;
+                		break;
+            		}
+        	}
+    	}
+
+    	printf("\n Errors: %d\n", matrix_error);
+
+    	clock_t end = clock();
+    	double cpu_time_used = ((double) (end - begin));
+
+    	printf("\n");
+    	// Print the time taken
+    	printf("Time taken for Strassen matrix multiplication: %f\n", cpu_time_used);
+
+	//// Complete ////
 
 	return errors;
 }

@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2024 Columbia University, System Level Design Group
 // SPDX-License-Identifier: Apache-2.0
 #include "libesp.h"
-#include "cfg_int8x8.h"
+#include "cfg_signed_int8x8.h"
 //#include "fuseml.h"
 
 
@@ -41,7 +41,7 @@ void generate_random_matrix(int matrix[SIZE][SIZE]) {
     // Fill the matrix with random values between -128 and 127
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            matrix[i][j] = rand() % 256;
+            matrix[i][j] = rand() % 256 - 128;
         }
     }
 }
@@ -95,8 +95,8 @@ void d2b(int decimal, char binary[]){
     int i = 0;
     // Convert decimal to binary
     for (i = 7; i >= 0; i--){
-        binary[i] = decimal % 2;
-        decimal = decimal / 2;
+        binary[i] = (decimal & 1) ? 1 : 0;
+        decimal >>= 1;
     }
 }
 
@@ -570,14 +570,15 @@ int main(int argc, char **argv)
 
 	init_parameters();
 
+for (int i = 0; i < 10; i++) {
 	buf = (token_t *) esp_alloc(size);
-	cfg_002[0].hw_buf = buf;
+	cfg_007[0].hw_buf = buf;
     
 	gold = malloc(out_size);
 
 	init_buffer(buf, gold);
 
-	printf("\n====== %s ======\n\n", cfg_002[0].devname);
+	printf("\n====== %s ======\n\n", cfg_007[0].devname);
 	/* <<--print-params-->> */
 	printf("  .reg5 = %d\n", reg5);
 	printf("  .reg4 = %d\n", reg4);
@@ -591,7 +592,7 @@ int main(int argc, char **argv)
 	printf("  .reg10 = %d\n", reg10);
 	printf("\n  ** START **\n");
 
-	esp_run(cfg_002, NACC);
+	esp_run(cfg_007, NACC);
 
 	printf("\n  ** DONE **\n");
 
@@ -605,7 +606,7 @@ int main(int argc, char **argv)
 	else
 		printf("+ Test FAILED\n");
 
-	printf("\n====== %s ======\n\n", cfg_002[0].devname);
-
+	printf("\n====== %s ======\n\n", cfg_007[0].devname);
+}
 	return errors;
 }
