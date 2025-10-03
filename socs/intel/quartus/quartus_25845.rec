@@ -1,0 +1,12 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 25845
+# Start logging TCL commands
+# Tue Aug 13 13:56:52 2024
+# **************************************************
+project_open "/home/yaagna/intel_esp/esp/socs/intel/quartus/top.qpf"
+# qui_open_report_page {Timing Analyzer||Timing Analyzer Summary}
+flng::run_flow_command -flow "dni_compile"
+# qui_open_report_page {Timing Analyzer||Timing Analyzer Summary}
+flng::run_flow_command -flow "dni_compile"
+# qui_open_report_page {Timing Analyzer||Timing Analyzer Summary}

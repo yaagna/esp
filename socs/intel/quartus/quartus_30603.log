@@ -1,0 +1,126 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 30603
+# Start logging UI actions
+# Mon Aug 12 20:53:42 2024
+# **************************************************
+[Mon Aug 12 20:53:52 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Mon Aug 12 20:53:55 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Mon Aug 12 20:53:57 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 20:54:00 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 20:54:03 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 20:54:04 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 20:55:48 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 20:57:38 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 20:57:38 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 21:07:47 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter' clicked
+[Mon Aug 12 21:07:47 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 21:38:15 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_fastforward_timing' clicked
+[Mon Aug 12 21:38:15 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 21:39:55 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > '&Stop Processing' was pressed
+[Mon Aug 12 21:39:56 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 21:40:01 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 21:40:02 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 22:08:39 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Mon Aug 12 22:08:39 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Mon Aug 12 22:11:47 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Mon Aug 12 22:11:47 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Mon Aug 12 22:12:00 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Window > '&Detach Window' was pressed
+[Mon Aug 12 22:18:26 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'dni_synthesis' clicked
+[Mon Aug 12 22:18:27 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 22:18:27 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 22:25:47 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 22:25:47 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 22:30:51 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter' clicked
+[Mon Aug 12 22:30:51 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 22:44:34 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > '&Stop Processing' was pressed
+[Mon Aug 12 22:44:35 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 22:44:52 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_place' clicked
+[Mon Aug 12 22:44:53 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 22:45:10 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Tools > '&Options...' was pressed
+[Mon Aug 12 22:45:11 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Mon Aug 12 22:45:11 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Mon Aug 12 22:45:11 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Mon Aug 12 22:45:11 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Mon Aug 12 22:45:17 2024] Window title: 'Options' | QPushButton 'Cancel' pressed!
+[Mon Aug 12 22:45:18 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > '&Stop Processing' was pressed
+[Mon Aug 12 22:45:19 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 22:45:26 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Tools > '&Options...' was pressed
+[Mon Aug 12 22:45:26 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Mon Aug 12 22:45:26 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Mon Aug 12 22:45:26 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Mon Aug 12 22:45:26 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Mon Aug 12 22:45:30 2024] Window title: 'Options' | 'Processing' page: 'Parallel compilation': QRadioButton '&Use all available processors' was unchecked
+[Mon Aug 12 22:45:30 2024] Window title: 'Options' | 'Processing' page: 'Parallel compilation': QRadioButton '&Maximum processors allowed:' was checked
+[Mon Aug 12 22:45:31 2024] Window title: 'Options' | 'Processing' page: 'Parallel compilation': QRadioButton '&Maximum processors allowed:' was unchecked
+[Mon Aug 12 22:45:31 2024] Window title: 'Options' | 'Processing' page: 'Parallel compilation': QRadioButton '&Use all available processors' was checked
+[Mon Aug 12 22:45:34 2024] Window title: 'Options' | QPushButton 'OK' pressed!
+[Mon Aug 12 22:45:41 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 22:45:42 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 23:15:28 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Mon Aug 12 23:15:28 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Mon Aug 12 23:16:22 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Mon Aug 12 23:16:22 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Mon Aug 12 23:16:27 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Window > '&Detach Window' was pressed
+[Mon Aug 12 23:20:47 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > '&Settings...' was pressed
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | QCheckBox '&Use project's relative path' was unchecked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'scrollAreaWidgetContents': QRadioButton '&Balanced (normal flow)' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run timing analysis after &Plan stage during compilation' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox '&Automatically launch Timing Analyzer GUI after a full compilation' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Automatically read &constraints and update the timing netlist when project is opened' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Automatically &run Setup Summary report when project is opened' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Report &worst-case paths during compilation' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run default timing analysis &before running custom script' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run timing analysis after &Plan stage during compilation' was unchecked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | QCheckBox '' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | QCheckBox '' was unchecked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | QCheckBox '&Perform glitch filtering on VCD files' was checked
+[Mon Aug 12 23:20:47 2024] Window title: 'Settings - top' | 'm_jtemp_radio': QRadioButton 'Specify junction tempe&rature:' was checked
+[Mon Aug 12 23:21:21 2024] Window title: 'Settings - top' | 'Design Assistant Rule Settings' page: QCheckBox '&Enable Design Assistant execution during compilation' was checked
+[Mon Aug 12 23:21:33 2024] Window title: 'Settings - top' | 'Programming Files' page: QCheckBox '&Generate programming files' was checked
+[Mon Aug 12 23:22:30 2024] Window title: 'Settings - top' | QPushButton 'OK' pressed!
+[Mon Aug 12 23:22:40 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Mon Aug 12 23:22:41 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 23:22:41 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 23:59:23 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Mon Aug 12 23:59:23 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 00:20:19 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Tue Aug 13 00:20:19 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Tue Aug 13 00:20:23 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Window > '&Detach Window' was pressed
+[Tue Aug 13 00:23:18 2024] Window title: 'Do You Want To Reload The File?' | QPushButton '&Yes' pressed!
+[Tue Aug 13 00:23:26 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Tue Aug 13 00:23:26 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 00:57:54 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 00:57:54 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 00:59:07 2024] Window title: 'Name Finder' | 'm_collection_combobox' combo box changed to: 'get_ports'
+[Tue Aug 13 00:59:09 2024] Window title: 'Name Finder' | QPushButton 'List' pressed!
+[Tue Aug 13 00:59:15 2024] Window title: 'Name Finder' | QPushButton 'OK' pressed!
+[Tue Aug 13 00:59:23 2024] Window title: 'Name Finder' | QPushButton 'List' pressed!
+[Tue Aug 13 00:59:32 2024] Window title: 'Name Finder' | 'm_collection_combobox' combo box changed to: 'get_ports'
+[Tue Aug 13 00:59:34 2024] Window title: 'Name Finder' | QPushButton 'List' pressed!
+[Tue Aug 13 00:59:45 2024] Window title: 'Name Finder' | QPushButton 'OK' pressed!
+[Tue Aug 13 00:59:49 2024] Window title: 'Set False Path' | QPushButton 'OK' pressed!
+[Tue Aug 13 01:00:35 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 01:00:39 2024] Window title: 'Write SDC File' | QPushButton '&Cancel' pressed!
+[Tue Aug 13 01:00:49 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'signoff_timing_analyzer' button for task 'sta_signoff' clicked
+[Tue Aug 13 01:00:50 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 01:00:50 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 01:00:57 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Tue Aug 13 01:00:57 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Tue Aug 13 01:01:01 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Window > '&Detach Window' was pressed
+[Tue Aug 13 01:02:49 2024] Window title: 'Save As' | QPushButton '&Yes' pressed!
+[Tue Aug 13 01:02:51 2024] Window title: 'Write SDC File' | QPushButton '&OK' pressed!
+[Tue Aug 13 09:59:53 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Tue Aug 13 09:59:55 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 09:59:55 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 10:34:30 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Tue Aug 13 10:34:30 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Tue Aug 13 10:34:49 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 10:34:49 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 10:36:22 2024] Window title: 'Timing Analyzer - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'show_combobox' combo box changed to: 'All'
+[Tue Aug 13 10:37:36 2024] Window title: 'Report Clock Network' | QPushButton 'Cancel' pressed!
+[Tue Aug 13 10:37:57 2024] Window title: 'Report False Path' | QPushButton 'Cancel' pressed!
+[Tue Aug 13 10:38:12 2024] Window title: 'Set Operating Conditions' | QPushButton 'Cancel' pressed!

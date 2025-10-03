@@ -1,0 +1,79 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 32427
+# Start logging UI actions
+# Mon Aug 12 11:45:16 2024
+# **************************************************
+[Mon Aug 12 11:45:45 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Mon Aug 12 11:45:47 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Mon Aug 12 11:45:48 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 11:46:22 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 11:48:33 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > 'Imp&ort Assignments...' was pressed
+[Mon Aug 12 11:48:47 2024] Window title: 'Open' | QPushButton '&Open' pressed!
+[Mon Aug 12 11:48:50 2024] Window title: 'Import Assignments' | QPushButton '&OK' pressed!
+[Mon Aug 12 11:49:30 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &File > '&Open...' was pressed
+[Mon Aug 12 11:49:35 2024] Window title: 'Open File' | QPushButton '&Cancel' pressed!
+[Mon Aug 12 11:51:06 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > 'Imp&ort Assignments...' was pressed
+[Mon Aug 12 11:51:28 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Project > 'Add/Remove &Files in Project...' was pressed
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | QCheckBox '&Use project's relative path' was unchecked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'scrollAreaWidgetContents': QRadioButton '&Balanced (normal flow)' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run timing analysis after &Plan stage during compilation' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox '&Automatically launch Timing Analyzer GUI after a full compilation' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Automatically read &constraints and update the timing netlist when project is opened' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Automatically &run Setup Summary report when project is opened' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Report &worst-case paths during compilation' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run default timing analysis &before running custom script' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'Page Label' page: QCheckBox 'Run timing analysis after &Plan stage during compilation' was unchecked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | QCheckBox '' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | QCheckBox '' was unchecked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | QCheckBox '&Perform glitch filtering on VCD files' was checked
+[Mon Aug 12 11:51:28 2024] Window title: 'Settings - top' | 'm_jtemp_radio': QRadioButton 'Specify junction tempe&rature:' was checked
+[Mon Aug 12 11:51:59 2024] Window title: 'Select File' | 'fileTypeCombo' combo box changed to: 'Script Files (*.tcl *.sdc *.qip *.sip *.rtlsdc)'
+[Mon Aug 12 11:52:06 2024] Window title: 'Select File' | QPushButton '&Open' pressed!
+[Mon Aug 12 11:52:09 2024] Window title: 'Settings - top' | QPushButton 'OK' pressed!
+[Mon Aug 12 11:52:15 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'dni_ipgenerate' clicked
+[Mon Aug 12 11:52:15 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 11:54:04 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'dni_analysis_and_synthesis' clicked
+[Mon Aug 12 11:54:04 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 11:55:17 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 12:03:52 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'sta_early' clicked
+[Mon Aug 12 12:03:53 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 12:03:55 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 12:18:56 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 12:18:59 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 13:54:06 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 13:54:10 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 13:54:12 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:10:39 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 14:10:44 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 14:22:02 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:22:02 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:22:03 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:22:21 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:22:23 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:22:25 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:38:34 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 14:38:43 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 14:49:49 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:49:58 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:49:59 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:50:05 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:50:06 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:50:12 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:50:21 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:50:24 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:50:25 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:50:27 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 14:50:27 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Mon Aug 12 14:50:29 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was unchecked
+[Mon Aug 12 15:31:29 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 15:31:33 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 15:38:16 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 15:38:19 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 16:21:17 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 16:21:20 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 16:40:21 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'fitter_plan' clicked
+[Mon Aug 12 16:40:24 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed

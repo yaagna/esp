@@ -1,0 +1,26 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 19430
+# Start logging UI actions
+# Mon Aug 12 11:17:41 2024
+# **************************************************
+[Mon Aug 12 11:17:50 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Mon Aug 12 11:17:52 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Mon Aug 12 11:17:54 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 11:18:27 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Mon Aug 12 11:18:52 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'signoff_timing_analyzer' button for task 'sta_signoff' clicked
+[Mon Aug 12 11:18:53 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Mon Aug 12 11:18:53 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Mon Aug 12 11:23:04 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > '&Device...' was pressed
+[Mon Aug 12 11:23:07 2024] Window title: 'Device' | 'Target device': QRadioButton '&Specific device selected in 'Available devices' list' was checked
+[Mon Aug 12 11:23:33 2024] Window title: 'Device' | QPushButton 'OK' pressed!
+[Mon Aug 12 11:28:53 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Project > '&Generate Tcl File for Project...' was pressed
+[Mon Aug 12 11:29:50 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > 'E&xport Assignments...' was pressed
+[Mon Aug 12 11:29:59 2024] Window title: 'Export Assignments' | QPushButton '&Cancel' pressed!
+[Mon Aug 12 11:30:06 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | &Assignments > 'E&xport Assignments...' was pressed
+[Mon Aug 12 11:30:29 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Mon Aug 12 11:30:29 2024] Window title: 'Export Assignments' | QPushButton '&OK' pressed!
+# **************************************************
+# Mon Aug 12 11:33:39 2024
+# End of logging UI actions
+# **************************************************

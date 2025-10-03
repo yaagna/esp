@@ -1,0 +1,28 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 29705
+# Start logging UI actions
+# Tue Aug 13 10:40:47 2024
+# **************************************************
+[Tue Aug 13 10:40:54 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Tue Aug 13 10:40:56 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Tue Aug 13 10:40:58 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 10:41:00 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 10:41:08 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Start &Compilation' was pressed
+[Tue Aug 13 10:41:09 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 10:41:09 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 10:44:55 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Tue Aug 13 10:52:43 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Tue Aug 13 10:52:44 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 11:28:57 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 11:28:57 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 11:59:19 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Tue Aug 13 11:59:19 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+[Tue Aug 13 11:59:42 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 11:59:42 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 12:00:24 2024] Window title: 'Create Clock' | QPushButton 'OK' pressed!
+[Tue Aug 13 12:00:31 2024] Window title: 'Quartus Prime' | QPushButton '&No' pressed!
+# **************************************************
+# Tue Aug 13 12:00:49 2024
+# End of logging UI actions
+# **************************************************
