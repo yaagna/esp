@@ -1,0 +1,16 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 22684
+# Start logging UI actions
+# Wed Oct 2 13:47:27 2024
+# **************************************************
+[Wed Oct  2 13:47:40 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &Tools > '&License Setup...' was pressed
+[Wed Oct  2 13:47:41 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Wed Oct  2 13:47:41 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Wed Oct  2 13:47:41 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Wed Oct  2 13:47:41 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Wed Oct  2 13:47:47 2024] Window title: 'Options' | QPushButton 'OK' pressed!
+# **************************************************
+# Wed Oct 2 13:47:50 2024
+# End of logging UI actions
+# **************************************************

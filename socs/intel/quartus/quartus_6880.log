@@ -1,0 +1,23 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 6880
+# Start logging UI actions
+# Tue Aug 13 12:01:41 2024
+# **************************************************
+[Tue Aug 13 12:01:59 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Tue Aug 13 12:02:01 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Tue Aug 13 12:02:02 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 12:02:04 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 12:04:01 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Tue Aug 13 12:04:15 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Tue Aug 13 12:04:17 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Tue Aug 13 12:04:17 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Tue Aug 13 12:05:41 2024] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | QCheckBox '' was checked
+[Tue Aug 13 12:39:23 2024] Window title: 'Report Clock Domain Crossing Viewer' | QCheckBox 'Report panel name:' was checked
+[Tue Aug 13 12:39:23 2024] Window title: 'Report Clock Domain Crossing Viewer' | 'File options': QRadioButton 'Overwrite' was checked
+[Tue Aug 13 13:54:54 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | 'report_viewer' button for task 'sta_signoff' clicked
+[Tue Aug 13 13:54:54 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation &Report' was pressed
+# **************************************************
+# Tue Aug 13 13:56:14 2024
+# End of logging UI actions
+# **************************************************

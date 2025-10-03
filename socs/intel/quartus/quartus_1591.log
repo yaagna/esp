@@ -1,0 +1,33 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 1591
+# Start logging UI actions
+# Sat Oct 5 00:42:37 2024
+# **************************************************
+[Sat Oct  5 00:42:58 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &Tools > '&License Setup...' was pressed
+[Sat Oct  5 00:42:59 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Sat Oct  5 00:42:59 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Sat Oct  5 00:42:59 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Sat Oct  5 00:42:59 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Sat Oct  5 00:43:05 2024] Window title: 'Options' | 'License Setup' page: QCheckBox 'Wait for floating licenses' was unchecked
+[Sat Oct  5 00:43:07 2024] Window title: 'Options' | 'License Setup' page: QCheckBox 'Wait for floating licenses' was checked
+[Sat Oct  5 00:43:08 2024] Window title: 'Options' | 'License Setup' page: QCheckBox 'Use LM_LICENSE_FILE variable:' was checked
+[Sat Oct  5 00:43:09 2024] Window title: 'Options' | 'License Setup' page: QCheckBox 'Use LM_LICENSE_FILE variable:' was unchecked
+[Sat Oct  5 00:43:30 2024] Window title: 'Options' | QPushButton 'OK' pressed!
+[Sat Oct  5 00:43:33 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &Tools > '&License Setup...' was pressed
+[Sat Oct  5 00:43:33 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Sat Oct  5 00:43:33 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Sat Oct  5 00:43:33 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Sat Oct  5 00:43:33 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Sat Oct  5 00:44:13 2024] Window title: 'Options' | QPushButton 'OK' pressed!
+[Sat Oct  5 00:44:31 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &Tools > '&Options...' was pressed
+[Sat Oct  5 00:44:31 2024] Window title: 'Options' | QCheckBox '&Use project's relative path' was unchecked
+[Sat Oct  5 00:44:31 2024] Window title: 'Options' | QCheckBox '&Enable parallel generation of Intel FPGA IPs in all projects' was checked
+[Sat Oct  5 00:44:31 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Skip regeneration of the IP core if its HDL files have been modified' was checked
+[Sat Oct  5 00:44:31 2024] Window title: 'Options' | ' IP regeneration policy ': QRadioButton '&Never regenerate design files for IP cores' was checked
+[Sat Oct  5 00:44:50 2024] Window title: 'Options' | QPushButton 'Cancel' pressed!
+[Sat Oct  5 00:45:10 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'E&xit' was pressed
+# **************************************************
+# Sat Oct 5 00:45:16 2024
+# End of logging UI actions
+# **************************************************

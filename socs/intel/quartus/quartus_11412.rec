@@ -1,0 +1,13 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 11412
+# Start logging TCL commands
+# Wed Oct 2 13:32:26 2024
+# **************************************************
+project_open "/home/yaagna/intel_esp/esp/socs/intel/quartus/top.qpf"
+flng::run_flow_command -flow "dni_compile" -resume
+project_close
+# **************************************************
+# Wed Oct 2 13:44:07 2024
+# End of logging TCL commands
+# **************************************************

@@ -1,0 +1,20 @@
+# **************************************************
+# Quartus Prime Version 23.4.0
+# Process ID 11412
+# Start logging UI actions
+# Wed Oct 2 13:32:26 2024
+# **************************************************
+[Wed Oct  2 13:32:37 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > '&Open...' was pressed
+[Wed Oct  2 13:32:58 2024] Window title: 'Open File' | QPushButton '&Cancel' pressed!
+[Wed Oct  2 13:33:05 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition' | &File > 'Open P&roject...' was pressed
+[Wed Oct  2 13:33:07 2024] Window title: 'Open Project' | QPushButton '&Open' pressed!
+[Wed Oct  2 13:33:08 2024] Window title: 'Quartus Prime' | QPushButton '&Yes' pressed!
+[Wed Oct  2 13:33:17 2024] Window title: 'Quartus Prime' | QPushButton '&OK' pressed!
+[Wed Oct  2 13:33:21 2024] Window title: 'Quartus Prime' | QPushButton '&OK' pressed!
+[Wed Oct  2 13:33:21 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+[Wed Oct  2 13:33:24 2024] [Compilation Dashboard] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | Start button for task 'run1' clicked
+[Wed Oct  2 13:33:24 2024] [Action triggered] Window title: 'Quartus Prime Pro Edition - /home/yaagna/intel_esp/esp/socs/intel/quartus/top - top [*]' | P&rocessing > 'Compilation Dashboard' was pressed
+# **************************************************
+# Wed Oct 2 13:44:07 2024
+# End of logging UI actions
+# **************************************************
