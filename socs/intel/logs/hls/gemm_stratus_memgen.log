@@ -1,0 +1,5 @@
+make[1]: Entering directory '/home/yaagna/intel_esp/esp/accelerators/stratus_hls/gemm_stratus/hw/hls-work-stratix10'
+  INFO: Target technology path: /home/yaagna/intel_esp/esp/rtl/techmap/stratix10/mem
+
+make[1]: 'memlib' is up to date.
+make[1]: Leaving directory '/home/yaagna/intel_esp/esp/accelerators/stratus_hls/gemm_stratus/hw/hls-work-stratix10'
